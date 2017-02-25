@@ -10,8 +10,9 @@ class EventList extends Component {
       {
 
         props.events.map((my_event) => (
-          <li key={my_event.id}>
-          {my_event.name}
+          <li className="EventList-li" key={my_event.id}>
+          <img className="EventList-image" src={my_event.image_path} alt="Event" />
+          <p>{my_event.name}</p>
           </li>
         ))
 
