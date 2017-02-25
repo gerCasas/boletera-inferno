@@ -1,11 +1,10 @@
-.App-header {
-  margin-bottom: 20px;
-}
-.App-header h1 {
-  margin: 0;
-  padding: 20px 0;
-}
-.App-content {
+
+.EventList-image {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.EventList-list  {
+  list-style-type: none;
 }
