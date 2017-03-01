@@ -1,28 +1,28 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
-import ApiService from './utils/ApiService';
+// import ApiService from './utils/ApiService';
 import './App.css';
-import EventList from './components/EventList/EventList';
+// import EventList from './components/EventList/EventList';
 
 class App extends Component {
-  componentDidMount() {
-    // GET list of events from API
-    ApiService.getEventList()
-      .then(
-        res => {
-          // Set state with fetched event list
-          this.setState({
-            events: res.data
-          });
-        },
-        error => {
-          // An error occurred, set state with error
-          this.setState({
-            error: error
-          });
-        }
-      );
-  }
+  // componentDidMount() {
+  //   // GET list of events from API
+  //   ApiService.getEventList()
+  //     .then(
+  //       res => {
+  //         // Set state with fetched event list
+  //         this.setState({
+  //           events: res.data
+  //         });
+  //       },
+  //       error => {
+  //         // An error occurred, set state with error
+  //         this.setState({
+  //           error: error
+  //         });
+  //       }
+  //     );
+  // }
 
   render(props, state) {
     return(
@@ -33,7 +33,7 @@ class App extends Component {
         <div className="App-content container-fluid">
           <div className="row">
             {
-              state.events ? (
+              // state.events ? (
                 // <ul>
                 //   {
                 //     state.events.map((my_event) => (
@@ -43,10 +43,12 @@ class App extends Component {
                 //     ))
                 //   }
                 // </ul>
-                <EventList events={state.events} />
-              ) : (
-                <p>Loading...</p>
-              )
+
+                // <EventList events={state.events} />
+                props.children
+              // ) : (
+              //   <p>Loading...</p>
+              // )
             }
           </div>
         </div>

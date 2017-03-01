@@ -8,3 +8,23 @@
 .EventList-list  {
   list-style-type: none;
 }
+
+.EventList-li:hover {
+  background-color: #f2f2f2;
+}
+
+.EventList-li {
+    padding: 10px;
+    float: left;
+}
+
+.EventList-li .Event-clickeable:hover {
+    color: black;
+}
+.EventList-li .Event-clickeable {
+    color: black;
+}
+
+.Event-name {
+    max-width: 200px;
+}
