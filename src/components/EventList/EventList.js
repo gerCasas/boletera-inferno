@@ -11,6 +11,7 @@ class EventList extends Component {
     ApiService.getEventList()
       .then(
         res => {
+          // console.log(res.data);
           // Set state with fetched event list
           this.setState({
             events: res.data
@@ -24,7 +25,6 @@ class EventList extends Component {
         }
       );
   }
-
 
   render(props, state) {
     return(
