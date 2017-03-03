@@ -4,9 +4,20 @@
 .App-header h1 {
   margin: 0;
   padding: 20px 0;
+  /*border: 3px solid #73AD21;*/
+  /*width: 60%;*/
+}
+
+.col-sm-9 {
+  /*border: 3px solid #73AD21;*/
 }
 .App-content {
   /*margin: 0 auto;*/
   /*max-width: 1000px;*/
   margin-right: 20px;
+}
+
+.city-header {
+  float: left;
+  margin-top: 30px;
 }

@@ -1,4 +1,4 @@
-const API = 'http://localhost:4000/api/';
+const API = 'http://192.168.0.138:4000/api/';
 
 // GET list of all dinosaurs from API
 function getEventList() {
@@ -9,6 +9,12 @@ function getEventList() {
 // GET a dinosaur's detail info from API by ID
 function getEvent(id) {
   return fetch(`${API}events/${id}`)
+    .then(_verifyResponse, _handleError);
+}
+
+// GET list of citys
+function getCityList() {
+  return fetch(`${API}citys`)
     .then(_verifyResponse, _handleError);
 }
 
@@ -30,5 +36,5 @@ function _handleError(error) {
 }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent };
+const ApiService = { getEventList, getEvent, getCityList };
 export default ApiService;
