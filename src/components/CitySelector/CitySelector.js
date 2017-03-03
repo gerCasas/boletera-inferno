@@ -3,12 +3,35 @@ import Component from 'inferno-component';
 import './CitySelector.css';
 import ApiService from '../.././utils/ApiService';
 
-function getDinoById(obj) {
+function changeCity(obj) {
+  const id = obj.id;
+  const name = obj.name;
   const instance = obj.instance;
-  console.log(instance);
+  // console.log(id);
+
+  instance.setState({
+    city_selected: id,
+    city_name_selected: name
+  });
+
+  getEventsByCityId();
+}
+
+function getEventsByCityId() {
+   console.log("asdzxc");
+
 }
 
 class CitySelector extends Component {
+
+  constructor() {
+    super();
+    // Set default loading state to false
+    this.state = {
+      id: 0,
+      city_name_selected: 'Select a city',
+    };
+  }
 
   componentDidMount() {
     // GET list of citys from API
@@ -31,21 +54,31 @@ class CitySelector extends Component {
   }
 
   render(props, state) {
+
     return(
-      <select className=".dropdown" id="soflow" onInput={linkEvent({instance: this}, getDinoById)}>
-      {
-        state.citys ? (
-          state.citys.map((my_city) => (
-            <option value={my_city.id}>
-              {my_city.name}
-            </option>
-          ))
-        ) : (
-          <p>Loading...</p>
-        )
-      }
-      </select>
+      <div class="dropdown">
+        <a class="dropbtn"><span class="glyphicon glyphicon-map-marker"></span> {state.city_name_selected}</a>
+        <div class="dropdown-content">
+          {
+            state.citys ? (
+              state.citys.map((my_city) => (
+                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, instance: this}, changeCity)}>{my_city.name}</a>
+              ))
+            ) : (
+              <p>Loading...</p>
+            )
+          }
+          {
+            state.city_selected ? (
+              console.log("asdasd")
+            ) : (
+              <p></p>
+            )
+          }
+        </div>
+      </div>
     );
+
   }
 }
 
