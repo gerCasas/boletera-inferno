@@ -12,7 +12,6 @@ const browserHistory = createBrowserHistory();
 
 const routes = (
   <Router history={ browserHistory }>
-
     <Route component={ App }>
       <IndexRoute component={ Homepage }/>
       <Route path="/events" component={ EventList }/>

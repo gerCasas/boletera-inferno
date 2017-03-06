@@ -20,9 +20,9 @@ class App extends Component {
           </div>
 
           <div className="col-sm-3 city_header">
-            <CitySelector/>
+            <CitySelector />
           </div>
-          
+
           <div className="col-sm-7">
           </div>
         </header>

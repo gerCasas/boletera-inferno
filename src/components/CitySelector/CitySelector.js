@@ -14,12 +14,11 @@ function changeCity(obj) {
     city_name_selected: name
   });
 
-  getEventsByCityId();
+  getEventsByCityId(instance);
 }
 
-function getEventsByCityId() {
-   console.log("asdzxc");
-
+function getEventsByCityId(obj) {
+  console.log(obj.state.city_selected);
 }
 
 class CitySelector extends Component {
@@ -68,17 +67,9 @@ class CitySelector extends Component {
               <p>Loading...</p>
             )
           }
-          {
-            state.city_selected ? (
-              console.log("asdasd")
-            ) : (
-              <p></p>
-            )
-          }
         </div>
       </div>
     );
-
   }
 }
 
