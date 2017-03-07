@@ -7,7 +7,8 @@ import { Link } from 'inferno-router';
 
 class App extends Component {
 
-  render(props, state) {
+  render({children}, state) {
+
     return(
 
       <div className="App">
@@ -30,7 +31,7 @@ class App extends Component {
         <div className="App-content container-fluid">
           <div className="row">
             {
-              props.children
+              children
             }
           </div>
         </div>

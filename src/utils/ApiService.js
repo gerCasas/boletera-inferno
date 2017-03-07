@@ -1,12 +1,18 @@
 const API = 'http://192.168.0.138:4000/api/';
 
-// GET list of all dinosaurs from API
+// GET list of all events from API
 function getEventList() {
   return fetch(`${API}events`)
     .then(_verifyResponse, _handleError);
 }
 
-// GET a dinosaur's detail info from API by ID
+// GET list of all events filtered by city_id and ative from API
+function getEventListByCityId(city_id) {
+  return fetch(`${API}events/?city_id=${city_id}`)
+    .then(_verifyResponse, _handleError);
+}
+
+// GET a events's detail info from API by ID
 function getEvent(id) {
   return fetch(`${API}events/${id}`)
     .then(_verifyResponse, _handleError);
@@ -36,5 +42,5 @@ function _handleError(error) {
 }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent, getCityList };
+const ApiService = { getEventList, getEvent, getCityList, getEventListByCityId };
 export default ApiService;
