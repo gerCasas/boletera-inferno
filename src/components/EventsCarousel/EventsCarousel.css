@@ -1,5 +1,62 @@
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-    width: auto;
-    margin: auto;
+.myCarousel {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.display-left {
+  position: absolute;
+  top: 40%;
+  left: 1%
+}
+
+.display-right {
+  position: absolute;
+  top: 40%;
+  right: 1%;
+}
+
+.mySlides {
+  /*border: 3px solid green;*/
+  width: 100%;
+  margin: auto;
+  max-width: 1000px;
+  /*min-width: 500px;*/
+  /*height: auto;*/
+}
+
+.button{
+  border:none;
+  display:inline-block;
+  outline:0;
+  padding:6px 16px;
+  vertical-align:middle;
+  overflow:hidden;
+  text-decoration:none!important;
+  color:#fff;
+  background-color:#008ae6;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap}
+
+.button{
+  box-shadow:0 5px 44px 5px rgba(0,0,0,0.2),0 0px 0px 0 rgba(0,0,0,0.19)
+}*/
+
+.button{
+  color:#000;
+  background-color:#f1f1f1;
+}
+
+.button:hover{
+  color:#000!important;
+  background-color:#007acc!important;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid blue;
 }

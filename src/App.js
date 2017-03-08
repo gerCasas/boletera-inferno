@@ -28,13 +28,13 @@ class App extends Component {
           </div>
         </header>
 
-        <div className="App-content container-fluid">
+
           <div className="row">
             {
               children
             }
           </div>
-        </div>
+      
       </div>
     );
   }

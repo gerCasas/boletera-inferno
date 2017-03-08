@@ -43,17 +43,28 @@ class EventDetail extends Component {
         state.event_info ? (
 
           <div className="event_detail">
-            <h2>{state.event_info.data.name}</h2>
-
-            <img className="img-responsive" src={state.event_info.data.image_path} alt="Event" width="400" height="400"/>
-            <div className="event_detail_descriptions">
-              <p>Description: {state.event_info.data.description}</p>
-              <p>Number of seats: {state.event_info.data.seats}</p>
-              <p>Event Date: {state.event_info.data.event_date}</p>
-              <p>Price: ${state.event_info.data.price}</p>
-              <p>Active: {state.event_info.data.active}</p>
-              {button_buyticket}
+            <div className="event_title">
+              <h2>{state.event_info.data.name}</h2>
             </div>
+
+            <div className="col-sm-1" />
+            <div className="col-sm-4 container-fluid">
+              <img className="img-responsive" src={state.event_info.data.image_path} alt="Event"/>
+            </div>
+
+            <div className="col-sm-6 event-content container-fluid">
+              <div className="event_detail_descriptions">
+                <p>Description: {state.event_info.data.description}</p>
+                <p>Number of seats: {state.event_info.data.seats}</p>
+                <p>Event Date: {state.event_info.data.event_date}</p>
+                <p>Price: ${state.event_info.data.price}</p>
+                <p>Active: {state.event_info.data.active}</p>
+                {button_buyticket}
+              </div>
+            </div>
+
+            <div className="col-sm-1" />
+
           </div>
         ) : (
           <p>Loading...</p>

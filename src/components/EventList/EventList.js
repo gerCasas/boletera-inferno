@@ -11,12 +11,13 @@ class EventList extends Component {
 
   render({myEvents}, state) {
 
-    // console.log(myEvents.data);
     let myEventsData = myEvents.data;
 
     return(
       <div>
-        <EventsCarousel />
+      <div className="col-sm-1" />
+      <div className="col-sm-10 App-content container-fluid">
+        <EventsCarousel left_name="<" right_name=">"/>
         <ul className="EventList-list">
           {
             myEventsData ? (
@@ -33,6 +34,8 @@ class EventList extends Component {
             )
           }
         </ul>
+        </div>
+        <div className="col-sm-1" />
       </div>
     );
   }
