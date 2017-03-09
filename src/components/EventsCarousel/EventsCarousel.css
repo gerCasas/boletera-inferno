@@ -7,13 +7,13 @@
 .display-left {
   position: absolute;
   top: 40%;
-  left: 1%
+  left: 5%
 }
 
 .display-right {
   position: absolute;
   top: 40%;
-  right: 1%;
+  right: 5%;
 }
 
 .mySlides {
@@ -37,7 +37,13 @@
   background-color:#008ae6;
   text-align:center;
   cursor:pointer;
-  white-space:nowrap}
+  white-space:nowrap;
+
+
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
 
 .button{
   box-shadow:0 5px 44px 5px rgba(0,0,0,0.2),0 0px 0px 0 rgba(0,0,0,0.19)

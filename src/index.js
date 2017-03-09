@@ -11,14 +11,13 @@ import { Provider } from 'inferno-mobx'
 import { observable } from 'mobx'
 
 let myStore = observable({ city_selected: '0' })
-let myEvents = observable({
-  "data": []
-})
+let myEvents = observable({ "data": [] })
+let myCarouselEvents = observable({ "data": [] })
 
 const browserHistory = createBrowserHistory();
 
 const routes = (
-  <Provider myStore={ myStore } myEvents={ myEvents }>
+  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents }>
     <Router history={ browserHistory }>
       <Route component={ App }>
         <IndexRoute component={ Homepage }/>

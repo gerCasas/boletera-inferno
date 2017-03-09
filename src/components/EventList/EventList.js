@@ -1,10 +1,9 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
-import './EventList.css';
-// import ApiService from '../.././utils/ApiService';
-import EventsCarousel from '.././EventsCarousel/EventsCarousel';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-mobx';
+import EventsCarousel from '.././EventsCarousel/EventsCarousel';
+import './EventList.css';
 
 const EventList = connect (['myEvents'],
 class EventList extends Component {

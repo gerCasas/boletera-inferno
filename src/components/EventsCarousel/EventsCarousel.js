@@ -1,11 +1,12 @@
 import Inferno, {linkEvent} from 'inferno';
 import Component from 'inferno-component';
+import { connect } from 'inferno-mobx';
 import './EventsCarousel.css';
 
 function changeImage(obj) {
   const direction = obj.direction;
   const instance = obj.instance;
-  const leghtArray = instance.state.images.length;
+  const leghtArray = obj.length;
   var index = instance.state.indexImage;
   switch (direction){
     case 1:
@@ -32,13 +33,16 @@ function changeImage(obj) {
   }
 }
 
+const EventsCarousel = connect (['myCarouselEvents'],
 class EventsCarousel extends Component {
+
+  lengthArray = 0;
+  indexImageCarousel = 0;
 
   constructor() {
     super();
 
     this.state = {
-      images: ["http://i.imgur.com/w0anexQ.jpg", "http://i.imgur.com/YxuCcfU.jpg", "http://i.imgur.com/wZCBL13.jpg", "http://i.imgur.com/6GNS9MS.jpg"],
       indexImage: 0
     };
   }
@@ -47,7 +51,7 @@ class EventsCarousel extends Component {
     // update time every x seconds
     this.timer = setInterval(() => {
       var index = (this.state.indexImage + 1);
-      const leghtArray = this.state.images.length;
+      const leghtArray = this.lengthArray;
       if (index > (leghtArray-1)) {
         index = 0;
       }
@@ -60,20 +64,35 @@ class EventsCarousel extends Component {
     clearInterval(this.timer);
   }
 
-
   render(props, state) {
+
+    let myCarouselEventsData = [];
+    if (this.lengthArray !== props.myCarouselEvents.data.length) {
+      this.indexImageCarousel = 0;
+    } else {
+      this.indexImageCarousel = state.indexImage;
+    }
+
+    this.lengthArray = props.myCarouselEvents.data.length;
+    myCarouselEventsData = props.myCarouselEvents.data;
     return(
       <div className="myCarousel" >
         <div className="col-sm-1" />
         <div className="col-sm-10 App-content container-fluid">
-          <img className="mySlides" id="mySlides" src={state.images[state.indexImage]} alt="Flower"  />
-          <button className="button display-left"onClick={linkEvent({direction: -1, instance: this}, changeImage)}>{props.left_name}</button>
-          <button className="button display-right" onClick={linkEvent({direction: 1, instance: this}, changeImage)}>{props.right_name}</button>
+
+          { this.lengthArray ? (
+            <img className="mySlides" id="mySlides" src={myCarouselEventsData[this.indexImageCarousel].image_path} alt="Events"  />
+          ) : (
+            <h1>Loading...</h1>
+          )}
+
+          <button className="button display-left"onClick={linkEvent({length: this.lengthArray, direction: -1, instance: this}, changeImage)}>{props.left_name}</button>
+          <button className="button display-right" onClick={linkEvent({length: this.lengthArray, direction: 1, instance: this}, changeImage)}>{props.right_name}</button>
         </div>
         <div className="col-sm-1" />
       </div>
     );
   }
-}
+})
 
 export default EventsCarousel;

@@ -6,9 +6,15 @@ function getEventList() {
     .then(_verifyResponse, _handleError);
 }
 
-// GET list of all events filtered by city_id and ative from API
+// GET list of all events filtered by city_id and active from API
 function getEventListByCityId(city_id) {
-  return fetch(`${API}events/?city_id=${city_id}`)
+  return fetch(`${API}citys/${city_id}/events/`)
+    .then(_verifyResponse, _handleError);
+}
+
+// GET list of all carousel_events filtered by city_id and active from API
+function getCarouselEventListByCityId(city_id) {
+  return fetch(`${API}citys/${city_id}/carousel_events/`)
     .then(_verifyResponse, _handleError);
 }
 
@@ -42,5 +48,5 @@ function _handleError(error) {
 }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent, getCityList, getEventListByCityId };
+const ApiService = { getEventList, getEvent, getCityList, getEventListByCityId, getCarouselEventListByCityId };
 export default ApiService;

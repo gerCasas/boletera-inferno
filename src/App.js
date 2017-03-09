@@ -28,13 +28,12 @@ class App extends Component {
           </div>
         </header>
 
-
           <div className="row">
             {
               children
             }
           </div>
-      
+
       </div>
     );
   }

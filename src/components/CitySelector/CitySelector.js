@@ -22,13 +22,25 @@ function changeCity(obj) {
     }
   );
 
+  //cargar eventos para carrusel de la ciudad seleccionada
+  ApiService.getCarouselEventListByCityId(id)
+  .then(
+    res => {
+       obj.carousel_events_list.data = res.data;
+    },
+    error => {
+       obj.carousel_events_list.data = '';
+    }
+  );
+
   instance.setState({
    city_selected: id,
-   city_name_selected: name
+   city_name_selected: name,
+   just_once: 0
  });
 }
 
-function SelectFirstCity(myEvents, id) {
+function SelectFirstCity(myEvents, myCarouselEvents, id) {
   ApiService.getEventListByCityId(id)
   .then(
     res => {
@@ -38,9 +50,18 @@ function SelectFirstCity(myEvents, id) {
        myEvents.data = '';
     }
   );
+  ApiService.getCarouselEventListByCityId(id)
+  .then(
+    res => {
+       myCarouselEvents.data = res.data;
+    },
+    error => {
+       myCarouselEvents.data = '';
+    }
+  );
 }
 
-const CitySelector = connect (['myStore', 'myEvents'],
+const CitySelector = connect (['myStore', 'myEvents', 'myCarouselEvents'],
 class CitySelector extends Component {
 
   constructor() {
@@ -62,7 +83,8 @@ class CitySelector extends Component {
           this.setState({
             citys: res.data,
             city_selected: res.data[0].id,
-            city_name_selected: res.data[0].name
+            city_name_selected: res.data[0].name,
+            just_once: 1
           });
         },
         error => {
@@ -74,10 +96,10 @@ class CitySelector extends Component {
       );
   }
 
-  render({myStore, myEvents}, state) {
+  render({myStore, myEvents, myCarouselEvents}, state) {
 
-    if (state.city_selected > 0) {
-      SelectFirstCity(myEvents,state.city_selected);
+    if (state.city_selected > 0 && state.just_once) {
+      SelectFirstCity(myEvents, myCarouselEvents, state.city_selected);
     }
 
     return(
@@ -87,7 +109,7 @@ class CitySelector extends Component {
           {
             state.citys ? (
               state.citys.map((my_city) => (
-                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, instance: this}, changeCity)}>{my_city.name}</a>
+                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, instance: this}, changeCity)}>{my_city.name}</a>
               ))
             ) : (
               <p>Loading...</p>
