@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   text-align: center;
+  background-color: #000000;
 }
 
 .display-left {
@@ -20,9 +21,9 @@
   /*border: 3px solid green;*/
   width: 100%;
   margin: auto;
-  max-width: 1000px;
+  max-width: 1100px;
   /*min-width: 500px;*/
-  /*height: auto;*/
+  height: 200%;
 }
 
 .button{

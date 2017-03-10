@@ -16,9 +16,15 @@
 }
 
 .EventList-li {
-  margin: 0 auto;
-  padding: 10px;
+  /*margin: 0 auto;*/
+  /*border: 3px solid red;*/
+  margin-bottom: 2px;
+  margin-right: 5px;
+  padding: 5px;
+  padding-top: 20px;
   float: left;
+  width: 160px;
+  height: 250px;
 }
 
 .EventList-li .Event-clickeable:hover {

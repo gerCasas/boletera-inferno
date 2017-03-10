@@ -14,9 +14,9 @@ class EventList extends Component {
 
     return(
       <div>
+      <EventsCarousel left_name="<" right_name=">"/>
       <div className="col-sm-1" />
       <div className="col-sm-10 App-content container-fluid">
-        <EventsCarousel left_name="<" right_name=">"/>
         <ul className="EventList-list">
           {
             myEventsData ? (
@@ -24,7 +24,7 @@ class EventList extends Component {
                 <li className="EventList-li" key={my_event.id}>
                   <Link to={"/events/"+my_event.id} className="Event-clickeable" style={{ cursor: "pointer" }}>
                     <img className="EventList-image" src={my_event.image_path} alt="Event" />
-                    <p className="Event-name">{my_event.id}</p>
+                    <p className="Event-name">{my_event.name}</p>
                   </Link>
                 </li>
               ))
