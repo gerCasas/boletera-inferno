@@ -31,7 +31,7 @@ class EventDetail extends Component {
     if (state.event_info) {
       button_buyticket = state.event_info.data.active;
       if (button_buyticket) {
-        button_buyticket = <button className="btn btn-primary btn-lg">Buy tickets</button>;
+        button_buyticket = <button className="btn btn-primary ">Buy tickets</button>;
       } else {
         button_buyticket = "";
       }
@@ -42,23 +42,47 @@ class EventDetail extends Component {
       {
         state.event_info ? (
 
-          <div className="event">
+          <div className="event container-fluid">
 
-            <div className="event_header">
-            <img className="img-responsive" src={state.event_info.data.image_path} alt="Event"/>
-              <div className="event_title">
-                <h2>{state.event_info.data.name}</h2>
+            <div className="row event_header">
+
+
+              <div className="visible-md visible-lg">
+                <img className="event-image-background" src={"http://i.imgur.com/CDFzAZp.jpg"} alt="" />
               </div>
-              {button_buyticket}
+
+              <div className="event-filter-dark"/>
+
+              <div className="image-div col-sm-4 col-md-4 col-lg-3">
+                <img className="event-img-responsive" src={state.event_info.data.image_path} alt="Event"/>
+              </div>
+
+              <div className="event-bullet-points col-sm-4 col-md-4 col-lg-5">
+          	    <p className="event-title">{state.event_info.data.name}</p>
+                <hr className="event-underscore"/>
+
+                <p className="event-place">
+                  <span className="event-icons glyphicon glyphicon-map-marker"></span>
+                  Place
+                </p>
+                <p className="event-date">
+                  <span className="event-icons glyphicon glyphicon-calendar"></span>
+                  Date: {state.event_info.data.event_date}
+                </p>
+                <p className="event-price">Price: ${state.event_info.data.price}</p>
+              </div>
+
+              <div className="button-div col-sm-4 col-md-4 col-lg-4">
+                {button_buyticket}
+              </div>
+
             </div>
 
-            <div className="event_detail_descriptions">
-              <p>Description: {state.event_info.data.description}</p>
-              <p>Number of seats: {state.event_info.data.seats}</p>
-              <p>Event Date: {state.event_info.data.event_date}</p>
-              <p>Price: ${state.event_info.data.price}</p>
-              <p>Active: {state.event_info.data.active}</p>
-
+            <div className="event_detail_descriptions col-sm-12 col-md-12 col-lg-12">
+              <h3>Event Details</h3>
+              <p><b>Description:</b> {state.event_info.data.description}</p>
+              <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
+              <p><b>Active:</b> {state.event_info.data.active}</p>
             </div>
 
           </div>

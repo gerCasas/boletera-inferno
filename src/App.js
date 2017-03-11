@@ -14,21 +14,23 @@ class App extends Component {
       <div className="App">
 
         <header className="App-header bg-primary clearfix">
-          <div className="col-sm-2">
-            <Link to={"/events/"}>
-              <h1 className="text-center">Boletera</h1>
-            </Link>
-          </div>
+          <div className="row-fluid">
+            <div className="col-sm-2">
+              <Link to={"/events/"}>
+                <h1 className="text-center">Boletera</h1>
+              </Link>
+            </div>
 
-          <div className="col-sm-3 city_header">
-            <CitySelector />
-          </div>
+            <div className="col-sm-3 city_header">
+              <CitySelector />
+            </div>
 
-          <div className="col-sm-7">
+            <div className="col-sm-7">
+            </div>
           </div>
         </header>
 
-          <div className="row">
+          <div className="row-fluid">
             {
               children
             }
