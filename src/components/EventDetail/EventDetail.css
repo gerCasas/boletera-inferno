@@ -1,3 +1,5 @@
+
+
 .event-image-background {
   width: auto;
   height: 240px;
@@ -12,7 +14,7 @@
 }
 
 .event-filter-dark {
-  background:rgba(30,30,30,0.6);
+  background:rgba(30,30,30,0.7);
   width: auto;
   height: auto;
   /*border: solid yellow;*/
@@ -26,17 +28,27 @@
 .image-div {
   margin-top:30px;
   /*background-color:green;*/
-  text-align:center;
+  /*text-align:center;*/
+}
+
+.image-div  {
+    text-align:center;
+}
+
+@media screen and (min-width: 768px) {
+    .image-div  {
+        text-align:right;
+    }
 }
 
 .event-img-responsive {
   width: 200px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 
 .event_detail_descriptions {
   /*border: solid orange;*/
-  /*margin: 20px;*/
+  margin-top: 30px;
   /*top:100%;*/
   /*margin-right: 120px;
   margin-left: 40px;*/
@@ -44,7 +56,7 @@
 
 .event_header{
   /*border: solid red;*/
-  background-color: #ff9999;
+  background-color: white;
   position: relative;
 }
 
@@ -82,15 +94,17 @@
   color:white;
 }
 
-.event {
-  /*border: solid blue;*/
-}
-
 .button-div {
   margin-top:80px;
   margin-bottom:40px;
   text-align:center;
   /*background-color:red;*/
+}
+
+@media screen and (max-width: 768px) {
+    .button-div   {
+        margin-top:0px;
+    }
 }
 
 .btn-primary {
@@ -100,4 +114,13 @@
 
 .event-icons {
   padding-right: 5px;
+}
+
+.column-title {
+  background: #f3f3f3;
+  
+}
+
+.border-bottom {
+  border-bottom: 1px solid #ddd;
 }

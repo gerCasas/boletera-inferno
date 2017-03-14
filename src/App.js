@@ -3,6 +3,7 @@ import Component from 'inferno-component';
 import './App.css';
 // import EventList from './components/EventList/EventList';
 import CitySelector from './components/CitySelector/CitySelector';
+import EventsCategoriesSelector from './components/EventsCategoriesSelector/EventsCategoriesSelector';
 import { Link } from 'inferno-router';
 
 class App extends Component {
@@ -29,6 +30,10 @@ class App extends Component {
             </div>
           </div>
         </header>
+
+        <div className="hidden-events-category-selector">
+          <EventsCategoriesSelector />
+        </div>
 
           <div className="row-fluid">
             {

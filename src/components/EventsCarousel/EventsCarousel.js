@@ -76,20 +76,29 @@ class EventsCarousel extends Component {
 
     this.lengthArray = props.myCarouselEvents.data.length;
     myCarouselEventsData = props.myCarouselEvents.data;
+
+    let styleColor = null;
+    if (this.lengthArray > 0) {
+      styleColor = myCarouselEventsData[this.indexImageCarousel].color_rgb;
+    } else {
+      styleColor = "white";
+    }
+
     return(
 
-      <div className="myCarousel" style={{backgroundColor:myCarouselEventsData[this.indexImageCarousel].color_rgb}}>
+      <div className="myCarousel" style={{backgroundColor:styleColor}}>
         { this.lengthArray ? (
           <Link to={"/events/"+myCarouselEventsData[this.indexImageCarousel].event_id} className="Event-clickeable" style={{ cursor: "pointer" }}>
             <img className="mySlides" id="mySlides" src={myCarouselEventsData[this.indexImageCarousel].image_path} alt="Events"  />
           </Link>
         ) : (
-          <h1>Loading...</h1>
+          <h1></h1>
         )}
 
         <button className="button display-left"onClick={linkEvent({length: this.lengthArray, direction: -1, instance: this}, changeImage)}>{props.left_name}</button>
         <button className="button display-right" onClick={linkEvent({length: this.lengthArray, direction: 1, instance: this}, changeImage)}>{props.right_name}</button>
       </div>
+
     );
   }
 })

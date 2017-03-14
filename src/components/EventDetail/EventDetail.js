@@ -28,13 +28,23 @@ class EventDetail extends Component {
   render(props, state) {
 
     let button_buyticket = "";
-    if (state.event_info) {
-      button_buyticket = state.event_info.data.active;
-      if (button_buyticket) {
+    if (state.event_info && state.event_info.data.active) {
         button_buyticket = <button className="btn btn-primary ">Buy tickets</button>;
       } else {
         button_buyticket = "";
-      }
+    }
+
+    let event_video = "";
+    if (state.event_info && state.event_info.data.video_url) {
+      event_video = <div className="embed-responsive embed-responsive-16by9">
+                      <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/tIUCg4a2J7w"></iframe>
+                    </div>
+      } else {
+        event_video = "";
+    }
+
+    if (state.event_info) {
+        console.log(state.event_info.data.details);
     }
 
     return(
@@ -44,26 +54,25 @@ class EventDetail extends Component {
 
           <div className="event container-fluid">
 
-            <div className="row event_header">
-
+            <div className="row event_header" style={`background-color:`+state.event_info.data.color_rgb}>
 
               <div className="visible-md visible-lg">
-                <img className="event-image-background" src={"http://i.imgur.com/CDFzAZp.jpg"} alt="" />
+                <img className="event-image-background" src={state.event_info.data.image_background_path}  alt="" />
               </div>
 
               <div className="event-filter-dark"/>
 
-              <div className="image-div col-sm-4 col-md-4 col-lg-3">
-                <img className="event-img-responsive" src={state.event_info.data.image_path} alt="Event"/>
+              <div className="image-div col-sm-3 col-md-3 col-lg-3">
+                <img className="event-img-responsive img-rounded" src={state.event_info.data.image_path} alt="Event"/>
               </div>
 
-              <div className="event-bullet-points col-sm-4 col-md-4 col-lg-5">
+              <div className="event-bullet-points col-sm-5 col-md-5 col-lg-5">
           	    <p className="event-title">{state.event_info.data.name}</p>
                 <hr className="event-underscore"/>
 
                 <p className="event-place">
                   <span className="event-icons glyphicon glyphicon-map-marker"></span>
-                  Place
+                  {state.event_info.data.address}, {state.event_info.data.city_name}
                 </p>
                 <p className="event-date">
                   <span className="event-icons glyphicon glyphicon-calendar"></span>
@@ -78,16 +87,44 @@ class EventDetail extends Component {
 
             </div>
 
-            <div className="event_detail_descriptions col-sm-12 col-md-12 col-lg-12">
-              <h3>Event Details</h3>
+            <div className="event_detail_descriptions col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
+              <h3>Event Description</h3>
               <p><b>Description:</b> {state.event_info.data.description}</p>
               <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
               <p><b>Active:</b> {state.event_info.data.active}</p>
+
+              {event_video}
+            </div>
+
+            <div className="container col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
+              <h3>Event Details</h3>
+              <table className="table border-bottom table-condensed">
+                <tbody>
+
+                    <tr>
+                      <td className="column-title">Refunds</td>
+                      <td>{state.event_info.data.refounds}</td>
+                    </tr>
+                    <tr>
+                      <td className="column-title">Gifting</td>
+                      <td>{state.event_info.data.gifting}</td>
+                    </tr>
+                    <tr>
+                      <td className="column-title">Assistance</td>
+                      <td>{state.event_info.data.assistance}</td>
+                    </tr>
+                    <tr>
+                      <td className="column-title">Prices</td>
+                      <td>{state.event_info.data.prices}</td>
+                    </tr>
+
+                </tbody>
+              </table>
             </div>
 
           </div>
         ) : (
-          <p>Loading...</p>
+          <p></p>
         )
       }
       </div>

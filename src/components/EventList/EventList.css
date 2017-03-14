@@ -25,6 +25,7 @@
   float: left;
   width: 150px;
   height: 250px;
+  font-weight: 300;
 }
 
 .EventList-li .Event-clickeable:hover {

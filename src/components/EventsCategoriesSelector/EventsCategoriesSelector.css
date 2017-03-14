@@ -1,0 +1,29 @@
+.selector {
+  background-color:#0d47a1;
+}
+
+.EventsCategory-ul {
+  list-style-type: none;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width:50%;
+  margin: 0 auto;
+  padding-left: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .EventsCategory-ul {
+        width:100%;
+    }
+}
+
+.EventsCategory-li {
+  color: white;
+  float: left;
+  padding-right: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.center-block {float: none !important}

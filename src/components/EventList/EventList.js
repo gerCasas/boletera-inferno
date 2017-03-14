@@ -23,7 +23,7 @@ class EventList extends Component {
               myEventsData.map((my_event) => (
                 <li className="EventList-li" key={my_event.id}>
                   <Link to={"/events/"+my_event.id} className="Event-clickeable" style={{ cursor: "pointer" }}>
-                    <img className="EventList-image" src={my_event.image_path} alt="Event" />
+                    <img className="EventList-image img-thumbnail" src={my_event.image_path} alt="Event" />
                     <p className="Event-name">{my_event.name}</p>
                   </Link>
                 </li>
