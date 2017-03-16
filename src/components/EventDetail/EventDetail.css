@@ -116,11 +116,10 @@
   padding-right: 5px;
 }
 
-.column-title {
-  background: #f3f3f3;
-  
-}
-
 .border-bottom {
   border-bottom: 1px solid #ddd;
+}
+
+.event-details-table {
+  margin-top: 40px;
 }

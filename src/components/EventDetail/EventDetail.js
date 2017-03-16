@@ -2,6 +2,7 @@ import Inferno from 'inferno';
 import Component from 'inferno-component';
 import './EventDetail.css';
 import ApiService from '../.././utils/ApiService';
+import EventDetailsTable from '.././EventDetailsTable/EventDetailsTable';
 
 class EventDetail extends Component {
 
@@ -30,21 +31,17 @@ class EventDetail extends Component {
     let button_buyticket = "";
     if (state.event_info && state.event_info.data.active) {
         button_buyticket = <button className="btn btn-primary ">Buy tickets</button>;
-      } else {
+    } else {
         button_buyticket = "";
     }
 
     let event_video = "";
     if (state.event_info && state.event_info.data.video_url) {
       event_video = <div className="embed-responsive embed-responsive-16by9">
-                      <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/tIUCg4a2J7w"></iframe>
+                      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/`+state.event_info.data.video_url}></iframe>
                     </div>
-      } else {
+    } else {
         event_video = "";
-    }
-
-    if (state.event_info) {
-        console.log(state.event_info.data.details);
     }
 
     return(
@@ -72,7 +69,12 @@ class EventDetail extends Component {
 
                 <p className="event-place">
                   <span className="event-icons glyphicon glyphicon-map-marker"></span>
-                  {state.event_info.data.address}, {state.event_info.data.city_name}
+                  {
+                    state.event_info.data.address ?  (
+                    state.event_info.data.address + `, ` + state.event_info.data.city_name
+                  ) : (
+                    state.event_info.data.city_name
+                  )}
                 </p>
                 <p className="event-date">
                   <span className="event-icons glyphicon glyphicon-calendar"></span>
@@ -96,30 +98,8 @@ class EventDetail extends Component {
               {event_video}
             </div>
 
-            <div className="container col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
-              <h3>Event Details</h3>
-              <table className="table border-bottom table-condensed">
-                <tbody>
-
-                    <tr>
-                      <td className="column-title">Refunds</td>
-                      <td>{state.event_info.data.refounds}</td>
-                    </tr>
-                    <tr>
-                      <td className="column-title">Gifting</td>
-                      <td>{state.event_info.data.gifting}</td>
-                    </tr>
-                    <tr>
-                      <td className="column-title">Assistance</td>
-                      <td>{state.event_info.data.assistance}</td>
-                    </tr>
-                    <tr>
-                      <td className="column-title">Prices</td>
-                      <td>{state.event_info.data.prices}</td>
-                    </tr>
-
-                </tbody>
-              </table>
+            <div className="event-details-table container col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
+                <EventDetailsTable event_details={state.event_info.data.details}/>
             </div>
 
           </div>
