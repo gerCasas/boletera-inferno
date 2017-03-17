@@ -24,6 +24,7 @@ class EventDetail extends Component {
           });
         }
       );
+      window.scrollTo(0, 0)
   }
 
   render(props, state) {

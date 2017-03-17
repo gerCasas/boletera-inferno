@@ -21,10 +21,17 @@
 
 .EventsCategory-li {
   color: white;
-  float: left;
-  padding-right: 10px;
   text-align: center;
   font-weight: 500;
 }
 
 .center-block {float: none !important}
+
+.nopadding {
+   padding-left: 0 !important;
+}
+
+.nopadding-container {
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+}
