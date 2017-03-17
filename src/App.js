@@ -3,6 +3,8 @@ import Component from 'inferno-component';
 import './App.css';
 // import EventList from './components/EventList/EventList';
 import CitySelector from './components/CitySelector/CitySelector';
+// import Footer from './components/Footer/Footer';
+import TestCarousel from './components/TestCarousel/TestCarousel';
 import EventsCategoriesSelector from './components/EventsCategoriesSelector/EventsCategoriesSelector';
 import { Link } from 'inferno-router';
 
@@ -41,6 +43,8 @@ class App extends Component {
             }
           </div>
 
+          <div className="padding-bottom">
+          </div>
       </div>
     );
   }

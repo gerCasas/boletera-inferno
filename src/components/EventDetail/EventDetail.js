@@ -98,7 +98,7 @@ class EventDetail extends Component {
               {event_video}
             </div>
 
-            <div className="event-details-table container col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
+            <div className="event-details-table container col-xs-12 col-sm-10 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
                 <EventDetailsTable event_details={state.event_info.data.details}/>
             </div>
 

@@ -13,7 +13,7 @@ const EventDetailsTable = function(props) {
   }
 
   return (
-   <div>
+   <div className="table-responsive">
     {eventslabel}
      <table className="table border-bottom table-condensed">
        <tbody>

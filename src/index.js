@@ -4,9 +4,10 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import App from './App';
 import Homepage from './components/Homepage/Homepage';
 import EventDetail from './components/EventDetail/EventDetail';
+import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 import { Provider } from 'inferno-mobx'
 import { observable } from 'mobx'
 
@@ -30,4 +31,8 @@ const routes = (
 
 Inferno.render(
     routes, document.getElementById('app')
+);
+
+Inferno.render(
+    <Footer />, document.getElementById('footer')
 );

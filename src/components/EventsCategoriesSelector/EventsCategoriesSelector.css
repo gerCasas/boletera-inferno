@@ -1,5 +1,6 @@
 .selector {
-  background-color:#0d47a1;
+  background-color:#337ab7;
+  opacity: 0.9;
 }
 
 .EventsCategory-ul {
@@ -12,7 +13,7 @@
   padding-left: 0px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 555px) {
     .EventsCategory-ul {
         width:100%;
     }
