@@ -17,14 +17,13 @@ class EventList extends Component {
       <EventsCarousel left_name="<" right_name=">"/>
 
       <div className="container-fluid">
-        <div className="row">
 
-          <div className="col-xs-12 col-sm-10 col-sm-offset-1 App-content container-events">
-            <ul className="EventList-list">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 App-content container-events">
+            <ul className="row EventList-list">
               {
                 myEventsData ? (
                   myEventsData.map((my_event) => (
-                    <li className="EventList-li col-xs-6 col-sm-4 col-md-3 col-lg-2 " key={my_event.id}>
+                    <li className="EventList-li col-xs-6 col-sm-3 col-md-3 col-lg-3 " key={my_event.id}>
                       <Link to={"/events/"+my_event.id} className="Event-clickeable" style={{ cursor: "pointer" }}>
                         <img className="EventList-image img-thumbnail" src={my_event.image_path} alt="Event" />
                         <p className="Event-name">{my_event.name}</p>
@@ -39,7 +38,7 @@ class EventList extends Component {
             </div>
 
           </div>
-        </div>
+
       </div>
     );
   }
