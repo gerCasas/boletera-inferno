@@ -2,7 +2,6 @@ import Inferno from 'inferno';
 import { Router, Route, IndexRoute } from 'inferno-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 import App from './App';
-import Homepage from './components/Homepage/Homepage';
 import EventDetail from './components/EventDetail/EventDetail';
 import Footer from './components/Footer/Footer';
 import EventList from './components/EventList/EventList';
@@ -14,15 +13,15 @@ import { observable } from 'mobx'
 let myStore = observable({ city_selected: '0' })
 let myEvents = observable({ "data": [] })
 let myCarouselEvents = observable({ "data": [] })
+let myCategory = observable({ category_selected_id: '0', category_selected_name: '' })
 
 const browserHistory = createBrowserHistory();
 
 const routes = (
-  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents }>
+  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents } myCategory={ myCategory }>
     <Router history={ browserHistory }>
       <Route component={ App }>
-        <IndexRoute component={ Homepage }/>
-        <Route path="/events" component={ EventList }/>
+        <IndexRoute component={ EventList }/>
         <Route path="/events/:id" component={ EventDetail }/>
       </Route>
     </Router>

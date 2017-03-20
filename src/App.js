@@ -16,7 +16,7 @@ class App extends Component {
         <header className="App-header bg-primary clearfix">
           <div className="row-fluid">
             <div className="col-sm-2">
-              <Link to={"/events/"}>
+              <Link to={"/"}>
                 <h1 className="text-center">Boletera</h1>
               </Link>
             </div>

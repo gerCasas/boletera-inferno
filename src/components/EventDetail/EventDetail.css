@@ -67,7 +67,7 @@
 
 .event_header{
   /*border: solid red;*/
-  background-color: white;
+  background-color: #2196f3;
   position: relative;
 }
 
@@ -118,19 +118,19 @@
     }
 }
 
-.btn-primary {
+.btn-resize {
   width: 220px;
   height: 50px;
 }
 
 @media screen and (max-width: 768px) {
-    .btn-primary   {
+    .btn-resize   {
       width:60%;
     }
 }
 
 @media screen and (max-width: 550px) {
-    .btn-primary   {
+    .btn-resize   {
       width:100%;
     }
 }

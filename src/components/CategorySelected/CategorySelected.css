@@ -1,0 +1,21 @@
+.category-selected-container {
+  background-color:#ececec;
+  background: -webkit-linear-gradient(to left, #337ab7 , #fffed8);
+  background: linear-gradient(to left, #337ab7 , #fffed8);
+  opacity: 0.9;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .category-selected-container {
+        font-size: 25px;
+    }
+}
+
+.name-category-selected {
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

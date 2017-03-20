@@ -31,7 +31,7 @@ class EventDetail extends Component {
 
     let button_buyticket = "";
     if (state.event_info && state.event_info.data.active) {
-        button_buyticket = <button className="btn btn-primary ">Buy tickets</button>;
+        button_buyticket = <button className="btn btn-warning btn-resize">Buy tickets</button>;
     } else {
         button_buyticket = "";
     }
@@ -90,17 +90,25 @@ class EventDetail extends Component {
 
             </div>
 
-            <div className="event_detail_descriptions col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
-              <h3>Event Description</h3>
-              <p><b>Description:</b> {state.event_info.data.description}</p>
-              <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
-              <p><b>Active:</b> {state.event_info.data.active}</p>
+            <div className="event_detail_descriptions container">
+              <div className="row">
+                <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                  <h3>Event Description</h3>
+                  <p><b>Description:</b> {state.event_info.data.description}</p>
+                  <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
+                  <p><b>Active:</b> {state.event_info.data.active}</p>
 
-              {event_video}
+                  {event_video}
+                </div>
+              </div>
             </div>
 
-            <div className="event-details-table container col-xs-12 col-sm-10 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
-                <EventDetailsTable event_details={state.event_info.data.details}/>
+            <div className="event-details-table container">
+              <div className="row">
+                <div className="col-xs-12 col-sm-10 col-md-9 col-lg-9">
+                  <EventDetailsTable event_details={state.event_info.data.details}/>
+                </div>
+              </div>
             </div>
 
           </div>

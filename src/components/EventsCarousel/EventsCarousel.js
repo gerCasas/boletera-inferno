@@ -68,7 +68,7 @@ class EventsCarousel extends Component {
   render(props, state) {
 
     let myCarouselEventsData = [];
-    if (this.lengthArray !== props.myCarouselEvents.data.length) {
+    if (this.lengthArray !== props.myCarouselEvents.data.length || state.indexImage >= props.myCarouselEvents.data.length) {
       this.indexImageCarousel = 0;
     } else {
       this.indexImageCarousel = state.indexImage;

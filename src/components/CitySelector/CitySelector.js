@@ -33,6 +33,9 @@ function changeCity(obj) {
     }
   );
 
+  obj.category_selected.category_selected_id = ""
+  obj.category_selected.category_selected_name = ""
+
   instance.setState({
    city_selected: id,
    city_name_selected: name,
@@ -40,7 +43,8 @@ function changeCity(obj) {
  });
 }
 
-function SelectFirstCity(myEvents, myCarouselEvents, id) {
+function SelectFirstCity(myStore, myEvents, myCarouselEvents, id) {
+  myStore.city_selected = id;
   ApiService.getEventListByCityId(id)
   .then(
     res => {
@@ -61,7 +65,7 @@ function SelectFirstCity(myEvents, myCarouselEvents, id) {
   );
 }
 
-const CitySelector = connect (['myStore', 'myEvents', 'myCarouselEvents'],
+const CitySelector = connect (['myStore', 'myEvents', 'myCarouselEvents', 'myCategory'],
 class CitySelector extends Component {
 
   constructor() {
@@ -96,10 +100,10 @@ class CitySelector extends Component {
       );
   }
 
-  render({myStore, myEvents, myCarouselEvents}, state) {
+  render({myStore, myEvents, myCarouselEvents, myCategory}, state) {
 
     if (state.city_selected > 0 && state.just_once) {
-      SelectFirstCity(myEvents, myCarouselEvents, state.city_selected);
+      SelectFirstCity(myStore, myEvents, myCarouselEvents, state.city_selected);
     }
 
     return(
@@ -109,7 +113,7 @@ class CitySelector extends Component {
           {
             state.citys ? (
               state.citys.map((my_city) => (
-                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, instance: this}, changeCity)}>{my_city.name}</a>
+                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, category_selected: myCategory, instance: this}, changeCity)}>{my_city.name}</a>
               ))
             ) : (
               <p>Loading...</p>

@@ -149,3 +149,9 @@
 	font-size: 1.5em;
   /*background-color:red;*/
 }
+.more-elements a:hover {
+  color: white;
+}
+.more-elements a:focus {
+  color: white;
+}

@@ -20,9 +20,17 @@
 }
 
 .EventsCategory-li {
-  color: white;
   text-align: center;
+}
+.EventsCategory-li a {
+  color: white;
   font-weight: 500;
+}
+.EventsCategory-li a:hover {
+  color: white;
+}
+.EventsCategory-li a:focus {
+  color: white;
 }
 
 .center-block {float: none !important}

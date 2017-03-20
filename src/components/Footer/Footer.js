@@ -16,9 +16,9 @@ class Footer extends Component {
                <div className="col-lg-9  col-md-9 col-sm-9 col-xs-12">
                  <h3> More </h3>
                  <ul>
-                   <li className="col-xs-4"><a href="#"> Your Account </a></li>
-                   <li className="col-xs-4"><a href="#"> Your Tickets </a></li>
-                   <li className="col-xs-4"><a href="#"> Help </a></li>
+                   <li className="col-xs-4 more-elements"><a href="#"> Your Account </a></li>
+                   <li className="col-xs-4 more-elements"><a href="#"> Your Tickets </a></li>
+                   <li className="col-xs-4 more-elements"><a href="#"> Help </a></li>
                  </ul>
                </div>
 

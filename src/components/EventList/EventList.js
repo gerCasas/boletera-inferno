@@ -3,6 +3,7 @@ import Component from 'inferno-component';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-mobx';
 import EventsCarousel from '.././EventsCarousel/EventsCarousel';
+import CategorySelected from '.././CategorySelected/CategorySelected';
 import './EventList.css';
 
 const EventList = connect (['myEvents'],
@@ -15,6 +16,7 @@ class EventList extends Component {
     return(
       <div>
       <EventsCarousel left_name="<" right_name=">"/>
+      <CategorySelected />
 
       <div className="container-fluid">
 
