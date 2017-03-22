@@ -107,9 +107,9 @@ class CitySelector extends Component {
     }
 
     return(
-      <div class="dropdown">
-        <a class="dropbtn"><span class="glyphicon glyphicon-map-marker"></span> {state.city_name_selected}</a>
-        <div class="dropdown-content">
+      <div className="dropdown">
+        <a className="dropbtn"><span className="glyphicon glyphicon-map-marker"></span> {state.city_name_selected}</a>
+        <div className="dropdown-content">
           {
             state.citys ? (
               state.citys.map((my_city) => (

@@ -1,4 +1,4 @@
-const API = 'http://192.168.0.138:4000/api/';
+const API = 'http://192.168.0.146:4000/api/';
 
 // GET list of all events from API
 function getEventList() {

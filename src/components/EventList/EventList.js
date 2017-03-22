@@ -4,7 +4,7 @@ import { Link } from 'inferno-router';
 import { connect } from 'inferno-mobx';
 // import EventsCarousel from '.././EventsCarousel/EventsCarousel';
 import CategorySelected from '.././CategorySelected/CategorySelected';
-import TestCarousel from '.././TestCarousel/TestCarousel';
+import CarouselEventsAnimated from '.././CarouselEventsAnimated/CarouselEventsAnimated';
 import './EventList.css';
 
 const EventList = connect (['myEvents'],
@@ -17,7 +17,7 @@ class EventList extends Component {
     return(
       <div>
       <CategorySelected />
-      <TestCarousel />
+      <CarouselEventsAnimated />
 
 
       <div className="container-fluid">
