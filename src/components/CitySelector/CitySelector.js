@@ -34,7 +34,7 @@ function changeCity(obj) {
   );
 
   obj.category_selected.category_selected_id = ""
-  obj.category_selected.category_selected_name = ""
+  obj.category_selected.category_selected_name = "All Shows"
 
   instance.setState({
    city_selected: id,

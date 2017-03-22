@@ -1,7 +1,7 @@
 .category-selected-container {
   background-color:#ececec;
-  background: -webkit-linear-gradient(to left, #337ab7 , #fffed8);
-  background: linear-gradient(to left, #337ab7 , #fffed8);
+  background: -webkit-linear-gradient(to left,  #337ab7 , #4787bd, #337ab7);
+  background: linear-gradient(to left,  #337ab7 , #4787bd, #337ab7);
   opacity: 0.9;
   text-align: center;
   font-size: 35px;
@@ -16,6 +16,7 @@
 
 .name-category-selected {
   color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  /*padding-top: 5px;*/
+  /*padding-bottom: 5px;*/
+  padding: 0;
 }

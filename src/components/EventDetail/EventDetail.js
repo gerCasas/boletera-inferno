@@ -3,6 +3,7 @@ import Component from 'inferno-component';
 import './EventDetail.css';
 import ApiService from '../.././utils/ApiService';
 import EventDetailsTable from '.././EventDetailsTable/EventDetailsTable';
+import EventDetailsList from '.././EventDetailsList/EventDetailsList';
 
 class EventDetail extends Component {
 
@@ -95,9 +96,7 @@ class EventDetail extends Component {
                 <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                   <h3>Event Description</h3>
                   <p><b>Description:</b> {state.event_info.data.description}</p>
-                  <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
-                  <p><b>Active:</b> {state.event_info.data.active}</p>
-
+                  <p><b>Number of seats:</b> {state.event_info.data.seats}</p>                
                   {event_video}
                 </div>
               </div>
@@ -105,8 +104,16 @@ class EventDetail extends Component {
 
             <div className="event-details-table container">
               <div className="row">
-                <div className="col-xs-12 col-sm-10 col-md-9 col-lg-9">
+                <div className="hidden-xs col-sm-12 col-md-9 col-lg-9">
                   <EventDetailsTable event_details={state.event_info.data.details}/>
+                </div>
+              </div>
+            </div>
+
+            <div className="event-details-list container">
+              <div className="row">
+                <div className="visible-xs col-xs-12">
+                  <EventDetailsList event_details={state.event_info.data.details}/>
                 </div>
               </div>
             </div>
