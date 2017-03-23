@@ -13,12 +13,14 @@ class EventList extends Component {
   render({myEvents}, state) {
 
     let myEventsData = myEvents.data;
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
     return(
       <div>
       <CategorySelected />
       <CarouselEventsAnimated />
-
 
       <div className="container-fluid">
 
@@ -31,11 +33,20 @@ class EventList extends Component {
                       <Link to={"/events/"+my_event.id} className="Event-clickeable" style={{ cursor: "pointer" }}>
                         <img className="EventList-image img-thumbnail" src={my_event.image_path} alt="Event" />
                         <p className="Event-name">{my_event.name}</p>
+                        <p className="Event-name">
+                        {
+                          my_event.final_event_date ? (
+                            (new Date(my_event.event_date)).getDate() + " " + monthNames[(new Date(my_event.event_date)).getMonth()] + " - " + (new Date(my_event.final_event_date)).getDate() + " " + monthNames[(new Date(my_event.final_event_date)).getMonth()]
+                          ) : (
+                            (new Date(my_event.event_date)).getDate() + " " + monthNames[(new Date(my_event.event_date)).getMonth()]
+                          )
+                        }
+                        </p>
                       </Link>
                     </li>
                   ))
                 ) : (
-                  <p>Loading...</p>
+                  <p>...</p>
                 )
               }
             </ul>

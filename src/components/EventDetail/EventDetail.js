@@ -4,6 +4,7 @@ import './EventDetail.css';
 import ApiService from '../.././utils/ApiService';
 import EventDetailsTable from '.././EventDetailsTable/EventDetailsTable';
 import EventDetailsList from '.././EventDetailsList/EventDetailsList';
+import EventPhotosGrid from '.././EventPhotosGrid/EventPhotosGrid';
 
 class EventDetail extends Component {
 
@@ -46,6 +47,15 @@ class EventDetail extends Component {
         event_video = "";
     }
 
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    if (state.event_info) {
+      var date_formated = new Date(state.event_info.data.event_date);
+      date_formated = date_formated.getDate() + " " + (monthNames[date_formated.getMonth()]) + " " + date_formated.getFullYear();
+    }
+
     return(
       <div>
       {
@@ -80,7 +90,7 @@ class EventDetail extends Component {
                 </p>
                 <p className="event-date">
                   <span className="event-icons glyphicon glyphicon-calendar"></span>
-                  Date: {state.event_info.data.event_date}
+                  Date: {date_formated}
                 </p>
                 <p className="event-price">Price: ${state.event_info.data.price}</p>
               </div>
@@ -93,18 +103,25 @@ class EventDetail extends Component {
 
             <div className="event_detail_descriptions container">
               <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                   <h3>Event Description</h3>
                   <p><b>Description:</b> {state.event_info.data.description}</p>
-                  <p><b>Number of seats:</b> {state.event_info.data.seats}</p>                
+                  <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
                   {event_video}
+                </div>
+
+                <div className="event-details-photos-grid col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <h3>Photos</h3>
+
+                  <EventPhotosGrid />
+
                 </div>
               </div>
             </div>
 
             <div className="event-details-table container">
               <div className="row">
-                <div className="hidden-xs col-sm-12 col-md-9 col-lg-9">
+                <div className="hidden-xs col-sm-12 col-md-8 col-lg-8">
                   <EventDetailsTable event_details={state.event_info.data.details}/>
                 </div>
               </div>

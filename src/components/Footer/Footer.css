@@ -12,6 +12,7 @@
   bottom: 0;
   width: 100%;
   height: 150px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
 }
 .footer-style {
   background-color:#337ab7;
@@ -139,7 +140,7 @@
 .footer-bottom {
 	background: #337ab7;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	/*padding-bottom: 10px;*/
   color: white;
 }
 .footer-bottom p.pull-left {

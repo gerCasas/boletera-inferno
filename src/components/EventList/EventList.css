@@ -5,6 +5,11 @@
   max-height: 280px;
   border-radius: 5px;
 }
+@media screen and (max-width: 768px) {
+  .EventList-image  {
+    max-height: 220px;
+  }
+}
 .EventList-list  {
   padding-left: 0;
   list-style-type: none;
@@ -79,5 +84,10 @@
       max-width: 1170px;
       margin: 0 auto;
       float: none !important;
+    }
+}
+@media screen and (max-width: 468px) {
+    .Event-name  {
+        font-size: 12px;
     }
 }
