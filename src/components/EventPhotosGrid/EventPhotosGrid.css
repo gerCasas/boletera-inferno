@@ -1,5 +1,5 @@
 .event-details-photos-grid{
-  border: solid green;
+  /*border: solid green;*/
 }
 .event-image-photo-grid{
   width: 100%;
@@ -8,7 +8,7 @@
   transition: 0.3s;
 }
 .event-details-photos-grid-row {
-  border: solid blue;
+  /*border: solid blue;*/
 }
 .padding-photo-grid-custom {
   padding-right: 0!important;
@@ -18,29 +18,32 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
+    padding-top: 10px; /* Location of the box */
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    /*background-color: rgb(221, 26, 26); /* Fallback color */
+    background-color: rgba(163, 163, 163, 0.2); /* Black w/ opacity */
 }
 /* Modal Content (image) */
 .modal-content {
-    margin: auto;
+    /*margin: auto;*/
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: 90%;
+    max-width: 650px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 /* Add Animation */
-.modal-content, #caption {
+/*.modal-content, #caption {
     -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
+    -webkit-animation-duration: 0.2s;
     animation-name: zoom;
-    animation-duration: 0.6s;
-}
+    animation-duration: 0.2s;
+}*/
 @-webkit-keyframes zoom {
     from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
@@ -68,6 +71,20 @@
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
     .modal-content {
-        width: 100%;
+        width: 80%;
+        /*height: 90%;*/
     }
+}
+.center-modal-content {
+  text-align: center;
+}
+.img-modal {
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.close-button-modal {
+  float: right;
+  right: 1%;
+  top: 1%;
 }

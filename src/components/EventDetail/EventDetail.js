@@ -108,6 +108,19 @@ class EventDetail extends Component {
                   <p><b>Description:</b> {state.event_info.data.description}</p>
                   <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
                   {event_video}
+
+                  <div className="row">
+                    <div className="event-details-table  hidden-xs col-sm-12 col-md-12 col-lg-12">
+                      <EventDetailsTable event_details={state.event_info.data.details}/>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="event-details-list visible-xs col-xs-12">
+                      <EventDetailsList event_details={state.event_info.data.details}/>
+                    </div>
+                  </div>
+
                 </div>
 
                 <div className="event-details-photos-grid col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -117,23 +130,13 @@ class EventDetail extends Component {
 
                 </div>
               </div>
+
+
+
+
             </div>
 
-            <div className="event-details-table container">
-              <div className="row">
-                <div className="hidden-xs col-sm-12 col-md-8 col-lg-8">
-                  <EventDetailsTable event_details={state.event_info.data.details}/>
-                </div>
-              </div>
-            </div>
 
-            <div className="event-details-list container">
-              <div className="row">
-                <div className="visible-xs col-xs-12">
-                  <EventDetailsList event_details={state.event_info.data.details}/>
-                </div>
-              </div>
-            </div>
 
           </div>
         ) : (
