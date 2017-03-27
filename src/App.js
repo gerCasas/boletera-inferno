@@ -3,30 +3,45 @@ import Component from 'inferno-component';
 import './App.css';
 import CitySelector from './components/CitySelector/CitySelector';
 import EventsCategoriesSelector from './components/EventsCategoriesSelector/EventsCategoriesSelector';
+import SearchInput from './components/SearchInput/SearchInput';
 import { Link } from 'inferno-router';
+
+// function do_something(a,b) {
+//   console.log(a, b);
+// }
 
 class App extends Component {
 
   render({children}, state) {
 
+    // if ("geolocation" in navigator) {
+    //   console.log("SIII");
+    //   navigator.geolocation.getCurrentPosition(function(position) {
+    //     do_something(position.coords.latitude, position.coords.longitude);
+    //   });
+    // } else {
+    //   console.log("NOOOO");
+    // }
+
     return(
 
       <div className="App">
-
-        <header className="App-header bg-primary clearfix">
+        <header className="container-fluid App-header bg-primary clearfix">
           <div className="row-fluid">
-            <div className="col-sm-2">
+            <div className="col-sm-2 display-custom">
               <Link to={"/"}>
                 <h2 className="text-center">Boletera</h2>
               </Link>
             </div>
 
-            <div className="col-sm-3 city_header">
+            <div className="col-sm-3 city_header display-custom">
               <CitySelector />
             </div>
 
-            <div className="col-sm-7">
+            <div className="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 padding-top-7">
+              <SearchInput />
             </div>
+
           </div>
         </header>
 
@@ -40,8 +55,7 @@ class App extends Component {
             }
           </div>
 
-          <div className="padding-bottom">
-          </div>
+          <div className="padding-bottom" />
       </div>
     );
   }

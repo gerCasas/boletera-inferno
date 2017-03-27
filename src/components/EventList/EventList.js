@@ -2,13 +2,17 @@ import Inferno from 'inferno';
 import Component from 'inferno-component';
 import { Link } from 'inferno-router';
 import { connect } from 'inferno-mobx';
-// import EventsCarousel from '.././EventsCarousel/EventsCarousel';
 import CategorySelected from '.././CategorySelected/CategorySelected';
 import CarouselEventsAnimated from '.././CarouselEventsAnimated/CarouselEventsAnimated';
+import EventsByCategoryNotFound from '.././EventsByCategoryNotFound/EventsByCategoryNotFound';
 import './EventList.css';
 
 const EventList = connect (['myEvents'],
 class EventList extends Component {
+  afterRenderSuccesful = 0;
+  componentDidMount() {
+    this.afterRenderSuccesful = 1;
+  }
 
   render({myEvents}, state) {
 
@@ -17,10 +21,18 @@ class EventList extends Component {
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
 
+    let events_not_found = ""
+    if (myEventsData != null){
+      if (myEventsData.length === 0 && this.afterRenderSuccesful){
+        events_not_found = <EventsByCategoryNotFound />;
+      }
+    }
+
     return(
       <div>
       <CategorySelected />
       <CarouselEventsAnimated />
+      {events_not_found}
 
       <div className="container-fluid">
 
@@ -51,9 +63,7 @@ class EventList extends Component {
               }
             </ul>
             </div>
-
           </div>
-
       </div>
     );
   }

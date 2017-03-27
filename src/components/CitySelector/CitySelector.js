@@ -39,7 +39,15 @@ function changeCity(obj) {
   instance.setState({
    city_selected: id,
    city_name_selected: name,
-   just_once: 0
+   just_once: 0,
+   display_value: 'none'
+ });
+}
+
+function openCityComboBox(obj) {
+  const instace = obj.instace;
+  instace.setState({
+   display_value: 'block'
  });
 }
 
@@ -74,6 +82,7 @@ class CitySelector extends Component {
     this.state = {
       id: 0,
       city_name_selected: 'Select a city',
+      display_value: 'none'
     };
   }
 
@@ -108,12 +117,12 @@ class CitySelector extends Component {
 
     return(
       <div className="dropdown">
-        <a className="dropbtn"><span className="glyphicon glyphicon-map-marker"></span> {state.city_name_selected}</a>
-        <div className="dropdown-content">
+        <a className="dropbtn" onClick={linkEvent({instace: this}, openCityComboBox)}><span className="glyphicon glyphicon-map-marker"></span> {state.city_name_selected}</a>
+        <div className="dropdown-content" style={`display:`+state.display_value}>
           {
             state.citys ? (
               state.citys.map((my_city) => (
-                <a href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, category_selected: myCategory, instance: this}, changeCity)}>{my_city.name}</a>
+                <a className="citys-name" href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, category_selected: myCategory, instance: this}, changeCity)}>{my_city.name}</a>
               ))
             ) : (
               <p>Loading...</p>

@@ -103,7 +103,7 @@ class EventDetail extends Component {
 
             <div className="event_detail_descriptions container">
               <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-event-details-custom">
                   <h3>Event Description</h3>
                   <p><b>Description:</b> {state.event_info.data.description}</p>
                   <p><b>Number of seats:</b> {state.event_info.data.seats}</p>
@@ -124,20 +124,11 @@ class EventDetail extends Component {
                 </div>
 
                 <div className="event-details-photos-grid col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                  <h3>Photos</h3>
-
-                  <EventPhotosGrid />
-
+                  <EventPhotosGrid event_id={state.event_info.data.id}/>
                 </div>
+
               </div>
-
-
-
-
             </div>
-
-
-
           </div>
         ) : (
           <p></p>

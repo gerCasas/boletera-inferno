@@ -11,25 +11,28 @@
   /*border: solid blue;*/
 }
 .padding-photo-grid-custom {
-  padding-right: 0!important;
-  padding-bottom: 15px!important;
+  /*padding-right: 0!important;*/
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+  padding-bottom: 5px!important;
 }
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    padding-top: 10px; /* Location of the box */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    /*background-color: rgb(221, 26, 26); /* Fallback color */
-    background-color: rgba(163, 163, 163, 0.2); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  padding-top: 10%; /* Location of the box */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  /*background-color: rgb(221, 26, 26); /* Fallback color */
+  background-color: rgba(163, 163, 163, 0.2); /* Black w/ opacity */
 }
 /* Modal Content (image) */
 .modal-content {
     /*margin: auto;*/
+    position: absolute!important;
     display: block;
     width: 90%;
     max-width: 650px;
@@ -87,4 +90,11 @@
   float: right;
   right: 1%;
   top: 1%;
+}
+.modal-dialog {
+  transform: none!important;
+  position: initial!important;
+}
+.event-details-photos-grid-row h3{
+  padding-left: 5px;
 }
