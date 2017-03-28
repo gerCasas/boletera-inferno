@@ -6,22 +6,9 @@ import EventsCategoriesSelector from './components/EventsCategoriesSelector/Even
 import SearchInput from './components/SearchInput/SearchInput';
 import { Link } from 'inferno-router';
 
-// function do_something(a,b) {
-//   console.log(a, b);
-// }
-
 class App extends Component {
 
   render({children}, state) {
-
-    // if ("geolocation" in navigator) {
-    //   console.log("SIII");
-    //   navigator.geolocation.getCurrentPosition(function(position) {
-    //     do_something(position.coords.latitude, position.coords.longitude);
-    //   });
-    // } else {
-    //   console.log("NOOOO");
-    // }
 
     return(
 

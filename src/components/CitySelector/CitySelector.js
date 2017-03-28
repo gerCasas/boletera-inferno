@@ -3,6 +3,7 @@ import Component from 'inferno-component';
 import './CitySelector.css';
 import ApiService from '../.././utils/ApiService';
 import { connect } from 'inferno-mobx'
+import GeolocationApiService from '../.././utils/GeolocationApiService';
 
 function changeCity(obj) {
   const id = obj.id;
@@ -73,12 +74,39 @@ function SelectFirstCity(myStore, myEvents, myCarouselEvents, id) {
   );
 }
 
+function refresh_city_by_geolocation(lat,lng, self) {
+  GeolocationApiService.getGeolocation(lat, lng)
+  .then(
+    res => {
+      if (res.results.length > 0) {
+        if (res.results[0].address_components.length > 0) {
+          var indexFound = -1;
+          for(var i = 0; i < self.state.citys.length; i++) {
+            if (self.state.citys[i].name === res.results[0].address_components[0].short_name) {
+              indexFound = i
+              break;
+            }
+          }
+
+          if (indexFound !== -1) {
+            self.setState({
+              city_selected: indexFound,
+              city_name_selected: res.results[0].address_components[0].short_name
+            });
+          }
+        }
+      }
+    },
+    error => {
+    }
+  );
+}
+
 const CitySelector = connect (['myStore', 'myEvents', 'myCarouselEvents', 'myCategory'],
 class CitySelector extends Component {
 
   constructor() {
     super();
-    // Set default loading state to false
     this.state = {
       id: 0,
       city_name_selected: 'Select a city',
@@ -87,12 +115,9 @@ class CitySelector extends Component {
   }
 
   componentDidMount() {
-    // GET list of citys from API
     ApiService.getCityList()
       .then(
         res => {
-          // console.log(res.data[0]);
-          // Set state with fetched city list
           this.setState({
             citys: res.data,
             city_selected: res.data[0].id,
@@ -101,12 +126,18 @@ class CitySelector extends Component {
           });
         },
         error => {
-          // An error occurred, set state with error
           this.setState({
             error: error
           });
         }
       );
+
+    if ("geolocation" in navigator) {
+      var self = this;
+      navigator.geolocation.getCurrentPosition(function(position) {
+        refresh_city_by_geolocation(position.coords.latitude, position.coords.longitude, self);
+      });
+    }
   }
 
   render({myStore, myEvents, myCarouselEvents, myCategory}, state) {
