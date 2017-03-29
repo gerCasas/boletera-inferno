@@ -37,7 +37,7 @@ class EventPhotosGrid extends Component{
     let event_photos_label = "";
     if (state.event_photos != null){
       if (state.event_photos.length > 0){
-        event_photos_label = <h3>Photos</h3>;
+        event_photos_label = <h3>Fotos</h3>;
       }
     }
 

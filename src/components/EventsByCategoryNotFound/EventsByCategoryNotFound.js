@@ -8,11 +8,11 @@ function({myCategory}) {
   return (
    <div className="error">
      <div className="error-code m-b-10 m-t-35"><i className="fa fa-thumbs-o-down"></i></div>
-     <h3 className="font-bold">{`We couldn't find events by "` + myCategoryName +`"`}</h3>
+     <h3 className="font-bold">{`No pudimos encontrar eventos por "` + myCategoryName +`"`}</h3>
 
      <div className="error-desc">
-       Sorry, but we do not seem to find any events for the category you have selected. <br/>
-       Try refreshing the page or click on a different category.
+        Lo sentimos, pero parece no haber ningún evento para la categoría que has seleccionado.<br/>
+        Intenta actualizar la página o da clic en una categoría diferente.
      </div>
    </div>
   )

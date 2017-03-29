@@ -9,7 +9,7 @@ const EventDetailsTable = function(props) {
 
   let eventslabel = "";
   if (eventsdetails.length > 0 ){
-    eventslabel = <h3>Event Details</h3>;
+    eventslabel = <h3>Detalles del evento</h3>;
   }
 
   return (

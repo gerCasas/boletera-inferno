@@ -17,8 +17,8 @@ class EventList extends Component {
   render({myEvents}, state) {
 
     let myEventsData = myEvents.data;
-    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    var monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+      "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
     ];
 
     let events_not_found = ""

@@ -1,4 +1,5 @@
 import Inferno, { linkEvent } from 'inferno';
+import { Link } from 'inferno-router';
 import Component from 'inferno-component';
 import './CitySelector.css';
 import ApiService from '../.././utils/ApiService';
@@ -35,7 +36,7 @@ function changeCity(obj) {
   );
 
   obj.category_selected.category_selected_id = ""
-  obj.category_selected.category_selected_name = "All Shows"
+  obj.category_selected.category_selected_name = "Todos"
 
   instance.setState({
    city_selected: id,
@@ -153,7 +154,9 @@ class CitySelector extends Component {
           {
             state.citys ? (
               state.citys.map((my_city) => (
-                <a className="citys-name" href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, category_selected: myCategory, instance: this}, changeCity)}>{my_city.name}</a>
+                <Link to={"/"}>
+                  <a className="citys-name" href="#" onClick={linkEvent({id: my_city.id, name: my_city.name, store: myStore, events_list: myEvents, carousel_events_list: myCarouselEvents, category_selected: myCategory, instance: this}, changeCity)}>{my_city.name}</a>
+                </Link>
               ))
             ) : (
               <p>Loading...</p>

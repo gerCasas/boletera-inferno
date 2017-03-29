@@ -3,7 +3,6 @@ import Component from 'inferno-component';
 import './App.css';
 import CitySelector from './components/CitySelector/CitySelector';
 import EventsCategoriesSelector from './components/EventsCategoriesSelector/EventsCategoriesSelector';
-import SearchInput from './components/SearchInput/SearchInput';
 import { Link } from 'inferno-router';
 
 class App extends Component {
@@ -23,10 +22,6 @@ class App extends Component {
 
             <div className="col-sm-3 city_header display-custom">
               <CitySelector />
-            </div>
-
-            <div className="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 padding-top-7">
-              <SearchInput />
             </div>
 
           </div>

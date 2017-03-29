@@ -15,7 +15,7 @@ import './index.css';
 let myStore = observable({ city_selected: '0' })
 let myEvents = observable({ "data": [] })
 let myCarouselEvents = observable({ "data": []})
-let myCategory = observable({ category_selected_id: '0', category_selected_name: 'All Shows' })
+let myCategory = observable({ category_selected_id: '0', category_selected_name: 'Todos' })
 
 const browserHistory = createBrowserHistory();
 

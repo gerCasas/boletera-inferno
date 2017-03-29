@@ -21,7 +21,7 @@ function getCarouselEventListByCityId(city_id) {
 // GET a events's detail info from API by ID
 function getEvent(id) {
   return fetch(`${API}events/${id}`)
-    .then(_verifyResponse, _handleError);
+  .then(_verifyResponse, _handleError);
 }
 
 // GET list of citys
@@ -52,6 +52,10 @@ function getEventPhotosListByEventId(event_id) {
 function _verifyResponse(res) {
   let contentType = res.headers.get('content-type');
 
+  if (res.status === 404) {
+    return '#my404';
+  }
+
   if (contentType && contentType.indexOf('application/json') !== -1) {
     return res.json();
   } else {
@@ -64,6 +68,14 @@ function _handleError(error) {
   console.error('An error occurred:', error);
   throw error;
 }
+
+// function handleErrors(response) {
+//   console.log(response);
+//   if (!response.ok) {
+//     throw Error(response.statusText);
+//   }
+//   return response;
+// }
 
 // Export ApiService
 const ApiService = { getEventList, getEvent, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };

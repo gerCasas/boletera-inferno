@@ -1,4 +1,5 @@
 import Inferno, { linkEvent } from 'inferno';
+import { Link } from 'inferno-router';
 import Component from 'inferno-component';
 import './EventsCategoriesSelector.css';
 import ApiService from '../.././utils/ApiService';
@@ -53,9 +54,11 @@ class EventsCategoriesSelector extends Component {
             state.categories ? (
               state.categories.map((my_category) => (
                 <li className="EventsCategory-li col-xs-4 nopadding" key={my_category.id} >
-                  <a href="#" onClick={linkEvent({id: my_category.id, name: my_category.name, category_store: myCategory, city_store: myStore, events_list: myEvents, instance: this}, changeCategory)}>
+                  <Link to={"/"}>
+                    <a href="#" onClick={linkEvent({id: my_category.id, name: my_category.name, category_store:     myCategory, city_store: myStore, events_list: myEvents, instance: this}, changeCategory)}>
                     {my_category.name}
-                  </a>
+                    </a>
+                  </Link>
                 </li>
               ))
             ) : (
