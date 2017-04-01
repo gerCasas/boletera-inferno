@@ -56,7 +56,7 @@ class CarouselEventsAnimated extends Component {
             props.myCarouselEvents.data ? (
               props.myCarouselEvents.data.map((my_carousel_event) => (
                 <div className={ "item " + my_carousel_event.prop_active + " ce-" + my_carousel_event.event_id} style={{backgroundColor:my_carousel_event.color_rgb}}>
-                  <Link to={"/events/"+my_carousel_event.event_id} className="Event-clickeable" style={{ cursor: "pointer" }}>
+                  <Link to={"/eventos/"+ my_carousel_event.event_id +"/"+ my_carousel_event.event_name.replace(/\s/g, "-")} className="Event-clickeable" style={{ cursor: "pointer" }}>
                     <img className="peopleCarouselImg" src={my_carousel_event.image_path} alt="..."/>
                     <div className="carousel-caption"></div>
                   </Link>

@@ -24,6 +24,12 @@ function getEvent(id) {
   .then(_verifyResponse, _handleError);
 }
 
+// GET city by id
+function getCityById(id) {
+  return fetch(`${API}citys/${id}`)
+  .then(_verifyResponse, _handleError);
+}
+
 // GET list of citys
 function getCityList() {
   return fetch(`${API}citys`)
@@ -52,7 +58,7 @@ function getEventPhotosListByEventId(event_id) {
 function _verifyResponse(res) {
   let contentType = res.headers.get('content-type');
 
-  if (res.status === 404) {
+  if (res.status === 404 || res.status === 400) {
     return '#my404';
   }
 
@@ -65,7 +71,7 @@ function _verifyResponse(res) {
 
 // Handle fetch errors
 function _handleError(error) {
-  console.error('An error occurred:', error);
+  console.error('An error occurrde:', error);
   throw error;
 }
 
@@ -78,5 +84,5 @@ function _handleError(error) {
 // }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
+const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
 export default ApiService;

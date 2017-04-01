@@ -10,6 +10,7 @@ import ErrorRequestPage from '.././ErrorRequestPage/ErrorRequestPage';
 class EventDetail extends Component {
 
   componentDidMount() {
+    // console.log(this.props);
     // GET list of events from API
     ApiService.getEvent(this.props.params.id)
       .then(

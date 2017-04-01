@@ -12,7 +12,8 @@ import EventList from './components/EventList/EventList';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-let myStore = observable({ city_selected: '0' })
+let myStore = observable({ city_selected: '0', city_selected_name: ''  })
+let myCitys = observable({ "data": [] })
 let myEvents = observable({ "data": [] })
 let myCarouselEvents = observable({ "data": []})
 let myCategory = observable({ category_selected_id: '0', category_selected_name: 'Todos' })
@@ -20,11 +21,18 @@ let myCategory = observable({ category_selected_id: '0', category_selected_name:
 const browserHistory = createBrowserHistory();
 
 const routes = (
-  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents } myCategory={ myCategory }>
+  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents } myCategory={ myCategory } myCitys={ myCitys }>
     <Router history={ browserHistory }>
       <Route component={ App }>
         <IndexRoute component={ EventList }/>
-        <Route path="/events/:id" component={ EventDetail }/>
+
+        <Route path="/ciudad/:city_id/:city_name" component={ EventList }>
+          <Route path="/ciudad/:city_id/:city_name/categoria/:category_id/:category_name" component={ EventList }/>
+        </Route>
+
+        <Route path="/categoria/:category_id/:category_name" component={ EventList }/>
+
+        <Route path="/eventos/:id/:title" component={ EventDetail }/>
         <Route path="*" component={ ErrorRequestPage }/>
       </Route>
     </Router>

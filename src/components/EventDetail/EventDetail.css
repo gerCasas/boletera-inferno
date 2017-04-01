@@ -1,6 +1,8 @@
 .event-image-background {
   width: auto;
-  height: 240px;
+  height: 100%;
+  /*max-height: 250px;*/
+  /*width: auto;*/
   /*border: solid green;*/
   left: 0%;
   right: 0%;
@@ -69,6 +71,7 @@
   /*border: solid red;*/
   background-color: #2196f3;
   position: relative;
+  overflow: hidden;
 }
 
 .event-bullet-points{

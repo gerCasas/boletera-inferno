@@ -3,27 +3,31 @@ import { Link } from 'inferno-router';
 import Component from 'inferno-component';
 import './EventsCategoriesSelector.css';
 import ApiService from '../.././utils/ApiService';
+import UpdateCategorySelected from '../.././utils/UpdateCategorySelected';
 import { connect } from 'inferno-mobx';
 
 function changeCategory(obj) {
-  const id = obj.id;
-  const name = obj.name;
-  //cambiar la ciudad seleccionada
-  obj.category_store.category_selected_id = id;
-  obj.category_store.category_selected_name = name;
 
-  if (obj.city_store.city_selected > 0) {
-    //cargar eventos de la ciudad y categoria seleccionada
-    ApiService.getEventListByCityIdCategoryId(obj.city_store.city_selected, obj.category_store.category_selected_id)
-    .then(
-      res => {
-         obj.events_list.data = res.data;
-      },
-      error => {
-         obj.events_list.data = '';
-      }
-    );
-  }
+  UpdateCategorySelected.changeCategory(obj);
+
+  // const id = obj.id;
+  // const name = obj.name;
+  // //cambiar la categoria seleccionada
+  // obj.category_store.category_selected_id = id;
+  // obj.category_store.category_selected_name = name;
+  //
+  // if (obj.city_store.city_selected > 0) {
+  //   //cargar eventos de la ciudad y categoria seleccionada
+  //   ApiService.getEventListByCityIdCategoryId(obj.city_store.city_selected, obj.category_store.category_selected_id)
+  //   .then(
+  //     res => {
+  //        obj.events_list.data = res.data;
+  //     },
+  //     error => {
+  //        obj.events_list.data = '';
+  //     }
+  //   );
+  // }
 }
 
 const EventsCategoriesSelector = connect (['myCategory', 'myStore', 'myEvents'],
@@ -54,7 +58,7 @@ class EventsCategoriesSelector extends Component {
             state.categories ? (
               state.categories.map((my_category) => (
                 <li className="EventsCategory-li col-xs-4 nopadding" key={my_category.id} >
-                  <Link to={"/"}>
+                  <Link to={"/categoria/"+ my_category.id +"/"+ my_category.name.replace(/\s/g, "-")}>
                     <a href="#" onClick={linkEvent({id: my_category.id, name: my_category.name, category_store:     myCategory, city_store: myStore, events_list: myEvents, instance: this}, changeCategory)}>
                     {my_category.name}
                     </a>
