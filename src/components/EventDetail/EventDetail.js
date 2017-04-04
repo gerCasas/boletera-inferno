@@ -16,7 +16,7 @@ class EventDetail extends Component {
         res => {
           let myErrCode404 = "";
           if (res === '#my404') {
-            myErrCode404 = "404";            
+            myErrCode404 = "404";
           }
           this.setState({
             event_info: res,

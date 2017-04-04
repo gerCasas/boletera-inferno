@@ -43,7 +43,12 @@
 
 .event-img-responsive {
   width: 200px;
+  height: 200px;
   /*border-radius: 5px;*/
+}
+
+.event-img-responsive:not([src]){
+    visibility: hidden;
 }
 
 @media screen and (max-width: 840px) {
@@ -56,6 +61,13 @@
 @media screen and (max-width: 767px) {
     .event-img-responsive   {
       width: 250px;
+      height: 250px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .event-title {
+      font-size:22px!important;    
     }
 }
 
