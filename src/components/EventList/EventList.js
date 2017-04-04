@@ -14,7 +14,6 @@ function changeCategory(obj) {
 }
 
 function SelectFirstCity(myStore, myEvents, myCarouselEvents, code, changeCity) {
-
   if (changeCity) {
     ApiService.getCityById(code)
     .then(
@@ -29,7 +28,6 @@ function SelectFirstCity(myStore, myEvents, myCarouselEvents, code, changeCity) 
           }
       },
       error => {
-
       }
     );
   }
@@ -65,10 +63,13 @@ class EventList extends Component {
       res => {
         this.props.myCitys.data = res.data
         if (this.props.myStore.city_selected==="") {
-          this.props.myStore.city_selected = this.props.myCitys.data[0].code
-          this.props.myStore.city_selected_name = " "+this.props.myCitys.data[0].name
-          if (this.props.params.category_id) {
-            changeCategory({id: this.props.params.category_id, category_store: this.props.myCategory, city_store: this.props.myStore, events_list: this.props.myEvents});
+          this.props.myStore.city_selected = this.props.myCitys.data[0].code;
+          this.props.myStore.city_selected_name = " "+this.props.myCitys.data[0].name;
+          //si no se especifico ciudad y no hay una ciudad guardada en sesion entonces se genera ciduad en sesion default
+          if (this.props.params.city_id === undefined && localStorage.getItem('city_code_session') === null) {
+            SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.props.myStore.city_selected, 1);
+            localStorage.setItem('city_code_session', this.props.myStore.city_selected);
+            localStorage.setItem('city_code_session_name', this.props.myStore.city_selected_name);
           }
         }
       },
@@ -77,15 +78,24 @@ class EventList extends Component {
     );
     if (this.props.params.city_id) {
       SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.props.params.city_id,1);
+      if (this.props.params.category_id) {
+        changeCategory({id: this.props.params.category_id, category_store: this.props.myCategory, city_code: this.props.params.city_id, events_list: this.props.myEvents});
+      }
+    } else {
+      if (localStorage.getItem('city_code_session')) {
+        //si el param de ciudad no es enviado entonces se busca la ciudad guardada en sesion
+        SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, localStorage.getItem('city_code_session'),1);
+        if (this.props.params.category_id) {
+          changeCategory({id: this.props.params.category_id, category_store: this.props.myCategory, city_code: localStorage.getItem('city_code_session'), events_list: this.props.myEvents});
+        }
+      } else {
+        // console.log(this.props.myStore.city_selected_name);
+        // SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.props.myStore.city_selected, 1);
+      }
     }
   }
 
   render(props, state) {
-
-    if (props.myStore.city_selected && this.justOnce) {
-      SelectFirstCity(props.myStore, props.myEvents, props.myCarouselEvents, props.myStore.city_selected, 0);
-      this.justOnce=0;
-    }
 
     let myEventsData = props.myEvents.data;
     var monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",

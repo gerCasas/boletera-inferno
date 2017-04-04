@@ -81,14 +81,6 @@ function _handleError(error) {
   throw error;
 }
 
-// function handleErrors(response) {
-//   console.log(response);
-//   if (!response.ok) {
-//     throw Error(response.statusText);
-//   }
-//   return response;
-// }
-
 // Export ApiService
 const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoryById, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
 export default ApiService;

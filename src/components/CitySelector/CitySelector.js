@@ -6,11 +6,13 @@ import ApiService from '../.././utils/ApiService';
 import { connect } from 'inferno-mobx'
 // import GeolocationApiService from '../.././utils/GeolocationApiService';
 
-function changeCity(obj) {  
+function changeCity(obj) {
   const id = obj.id;
   const name = obj.name;
   const instance = obj.instance;
   //cambiar la ciudad seleccionada
+  localStorage.setItem('city_code_session', id);
+  localStorage.setItem('city_code_session_name', name);
   obj.store.city_selected = id;
   obj.store.city_selected_name = " "+name;
 
@@ -40,9 +42,6 @@ function changeCity(obj) {
   obj.category_selected.category_selected_name = "Todos"
 
   instance.setState({
-  //  city_selected: id,
-  //  city_name_selected: name,
-   just_once: 0,
    display_value: 'none'
  });
 }

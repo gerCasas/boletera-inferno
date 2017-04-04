@@ -1,12 +1,14 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import './EventDetail.css';
+import { connect } from 'inferno-mobx';
 import ApiService from '../.././utils/ApiService';
 import EventDetailsTable from '.././EventDetailsTable/EventDetailsTable';
 import EventDetailsList from '.././EventDetailsList/EventDetailsList';
 import EventPhotosGrid from '.././EventPhotosGrid/EventPhotosGrid';
 import ErrorRequestPage from '.././ErrorRequestPage/ErrorRequestPage';
 
+const EventDetail = connect (['myStore'],
 class EventDetail extends Component {
 
   componentDidMount() {
@@ -31,6 +33,14 @@ class EventDetail extends Component {
         }
       );
       window.scrollTo(0, 0)
+
+      if (localStorage.getItem('city_code_session')) {
+        this.props.myStore.city_selected = localStorage.getItem('city_code_session')
+        this.props.myStore.city_selected_name = " "+localStorage.getItem('city_code_session_name')
+      } else {
+        this.props.myStore.city_selected = ""
+        this.props.myStore.city_selected_name = " Selecciona Ciudad"
+      }
   }
 
   render(props, state) {
@@ -202,6 +212,6 @@ class EventDetail extends Component {
       </div>
     );
   }
-}
+})
 
 export default EventDetail;

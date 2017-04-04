@@ -13,10 +13,10 @@ function changeCategory(obj) {
       obj.category_store.category_selected_name = '';
     }
   );
-  
-  if (obj.city_store.city_selected) {
+
+  if (obj.city_code) {
     //cargar eventos de la ciudad y categoria seleccionada
-    ApiService.getEventListByCityIdCategoryId(obj.city_store.city_selected, obj.category_store.category_selected_id)
+    ApiService.getEventListByCityIdCategoryId(obj.city_code, obj.category_store.category_selected_id)
     .then(
       res => {
         obj.events_list.data = res.data;
