@@ -12,7 +12,7 @@ import EventList from './components/EventList/EventList';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-let myStore = observable({ city_selected: '0', city_selected_name: ''  })
+let myStore = observable({ city_selected: '0', city_selected_name: ' Selecciona Ciudad'  })
 let myCitys = observable({ "data": [] })
 let myEvents = observable({ "data": [] })
 let myCarouselEvents = observable({ "data": []})
@@ -25,13 +25,8 @@ const routes = (
     <Router history={ browserHistory }>
       <Route component={ App }>
         <IndexRoute component={ EventList }/>
-
-        <Route path="/ciudad/:city_id/:city_name" component={ EventList }>
-          <Route path="/ciudad/:city_id/:city_name/categoria/:category_id/:category_name" component={ EventList }/>
-        </Route>
-
+        <Route path="/ciudad/:city_id/:city_name" component={ EventList }/>
         <Route path="/categoria/:category_id/:category_name" component={ EventList }/>
-
         <Route path="/eventos/:id/:title" component={ EventDetail }/>
         <Route path="*" component={ ErrorRequestPage }/>
       </Route>

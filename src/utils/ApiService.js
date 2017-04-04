@@ -36,6 +36,12 @@ function getCityList() {
     .then(_verifyResponse, _handleError);
 }
 
+// GET city by id
+function getCategoryById(id) {
+  return fetch(`${API}categories/${id}`)
+  .then(_verifyResponse, _handleError);
+}
+
 // GET list of categories
 function getCategoriesList() {
   return fetch(`${API}categories`)
@@ -84,5 +90,5 @@ function _handleError(error) {
 // }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
+const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoryById, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
 export default ApiService;

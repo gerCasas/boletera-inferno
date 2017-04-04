@@ -41,8 +41,8 @@ function changeCity(obj) {
   obj.category_selected.category_selected_name = "Todos"
 
   instance.setState({
-   city_selected: id,
-   city_name_selected: name,
+  //  city_selected: id,
+  //  city_name_selected: name,
    just_once: 0,
    display_value: 'none'
  });
@@ -55,56 +55,6 @@ function openCityComboBox(obj) {
  });
 }
 
-function SelectFirstCity(myStore, myEvents, myCarouselEvents, id) {
-  myStore.city_selected = id;
-  // ApiService.getEventListByCityId(id)
-  // .then(
-  //   res => {
-  //      myEvents.data = res.data;
-  //   },
-  //   error => {
-  //      myEvents.data = '';
-  //   }
-  // );
-  // ApiService.getCarouselEventListByCityId(id)
-  // .then(
-  //   res => {
-  //      myCarouselEvents.data = res.data;
-  //   },
-  //   error => {
-  //      myCarouselEvents.data = '';
-  //   }
-  // );
-}
-
-// function refresh_city_by_geolocation(lat,lng, self) {
-//   GeolocationApiService.getGeolocation(lat, lng)
-//   .then(
-//     res => {
-//       if (res.results.length > 0) {
-//         if (res.results[0].address_components.length > 0) {
-//           var indexFound = -1;
-//           for(var i = 0; i < self.state.citys.length; i++) {
-//             if (self.state.citys[i].name === res.results[0].address_components[0].short_name) {
-//               indexFound = i
-//               break;
-//             }
-//           }
-//
-//           if (indexFound !== -1) {
-//             self.setState({
-//               city_selected: indexFound,
-//               city_name_selected: res.results[0].address_components[0].short_name
-//             });
-//           }
-//         }
-//       }
-//     },
-//     error => {
-//     }
-//   );
-// }
-
 const CitySelector = connect (['myStore', 'myEvents', 'myCarouselEvents', 'myCategory', 'myCitys'],
 class CitySelector extends Component {
 
@@ -112,7 +62,7 @@ class CitySelector extends Component {
     super();
     this.state = {
       id: 0,
-      city_name_selected: 'Selecciona una Ciudad',
+      // city_name_selected: 'Selecciona una Ciudad',
       display_value: 'none'
     };
   }
@@ -121,13 +71,7 @@ class CitySelector extends Component {
     ApiService.getCityList()
       .then(
         res => {
-          // SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, res.data[0].id);
-          this.setState({
-            citys: res.data,
-            // city_selected: res.data[0].id,
-            // city_name_selected: res.data[0].name,
-            just_once: 1
-          });
+          this.props.myCitys.data = res.data
         },
         error => {
           this.setState({
@@ -135,26 +79,11 @@ class CitySelector extends Component {
           });
         }
       );
-
-      // if (this.state.city_selected > 0 && this.state.just_once) {
-      //   SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.state.city_selected);
-      // }
-
-    // if ("geolocation" in navigator) {
-    //   var self = this;
-    //   navigator.geolocation.getCurrentPosition(function(position) {
-    //     refresh_city_by_geolocation(position.coords.latitude, position.coords.longitude, self);
-    //   });
-    // }
   }
 
   render(props, state) {
 
     let myCitysData = props.myCitys.data;
-
-    // if (state.city_selected > 0 && state.just_once) {
-    //   SelectFirstCity(props.myStore, props.myEvents, props.myCarouselEvents, state.city_selected);
-    // }
 
     return(
       <div className="dropdown">
