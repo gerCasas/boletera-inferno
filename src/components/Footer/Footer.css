@@ -156,3 +156,6 @@
 .more-elements a:focus {
   color: white;
 }
+.footer-bottom {
+  padding-bottom: 10px;
+}
