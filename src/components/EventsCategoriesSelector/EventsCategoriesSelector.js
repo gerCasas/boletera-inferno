@@ -37,9 +37,9 @@ class EventsCategoriesSelector extends Component {
           {
             state.categories ? (
               state.categories.map((my_category) => (
-                <li className="EventsCategory-li col-xs-4 nopadding" key={my_category.id} >
-                  <Link to={"/categoria/"+ my_category.id +"/"+ my_category.name.replace(/\s/g, "-")}>
-                    <a href="#" onClick={linkEvent({id: my_category.id, category_store: myCategory, city_store: myStore, events_list: myEvents}, changeCategory)}>
+                <li className="EventsCategory-li col-xs-4 nopadding" key={my_category.code} >
+                  <Link to={"/categoria/"+ my_category.code}>
+                    <a href="#" onClick={linkEvent({id: my_category.code, category_store: myCategory, city_store: myStore, events_list: myEvents}, changeCategory)}>
                     {my_category.name}
                     </a>
                   </Link>

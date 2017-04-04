@@ -10,16 +10,13 @@ import ErrorRequestPage from '.././ErrorRequestPage/ErrorRequestPage';
 class EventDetail extends Component {
 
   componentDidMount() {
-    // console.log(this.props);
     // GET list of events from API
     ApiService.getEvent(this.props.params.id)
       .then(
         res => {
           let myErrCode404 = "";
-          // console.log("resp api ",res);
           if (res === '#my404') {
-            myErrCode404 = "404";
-            // console.log(myErrCode404);
+            myErrCode404 = "404";            
           }
           this.setState({
             event_info: res,

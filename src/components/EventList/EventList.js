@@ -13,20 +13,19 @@ function changeCategory(obj) {
   UpdateCategorySelected.changeCategory(obj);
 }
 
-function SelectFirstCity(myStore, myEvents, myCarouselEvents, id, changeCity) {
+function SelectFirstCity(myStore, myEvents, myCarouselEvents, code, changeCity) {
 
-  // console.log("ZZZ",id);
   if (changeCity) {
-    ApiService.getCityById(id)
+    ApiService.getCityById(code)
     .then(
       res => {
           if (res !== '#my404') {
-            myStore.city_selected = id;
+            myStore.city_selected = code;
             myStore.city_selected_name = " "+res.data.name;
           } else {
             // 404
-            id = -1;
-            myStore.city_selected = -1
+            code = "";
+            myStore.city_selected = ""
           }
       },
       error => {
@@ -34,7 +33,7 @@ function SelectFirstCity(myStore, myEvents, myCarouselEvents, id, changeCity) {
       }
     );
   }
-  ApiService.getEventListByCityId(id)
+  ApiService.getEventListByCityId(code)
   .then(
     res => {
        myEvents.data = res.data;
@@ -43,7 +42,7 @@ function SelectFirstCity(myStore, myEvents, myCarouselEvents, id, changeCity) {
        myEvents.data = '';
     }
   );
-  ApiService.getCarouselEventListByCityId(id)
+  ApiService.getCarouselEventListByCityId(code)
   .then(
     res => {
        myCarouselEvents.data = res.data;
@@ -64,10 +63,9 @@ class EventList extends Component {
     ApiService.getCityList()
     .then(
       res => {
-        // console.log("res",res);
         this.props.myCitys.data = res.data
-        if (this.props.myStore.city_selected==="0") {
-          this.props.myStore.city_selected = this.props.myCitys.data[0].id
+        if (this.props.myStore.city_selected==="") {
+          this.props.myStore.city_selected = this.props.myCitys.data[0].code
           this.props.myStore.city_selected_name = " "+this.props.myCitys.data[0].name
           if (this.props.params.category_id) {
             changeCategory({id: this.props.params.category_id, category_store: this.props.myCategory, city_store: this.props.myStore, events_list: this.props.myEvents});
@@ -80,16 +78,11 @@ class EventList extends Component {
     if (this.props.params.city_id) {
       SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.props.params.city_id,1);
     }
-    // if (this.props.params.category_id) {
-    //   changeCategory({id: this.props.params.category_id, name: "testCategoriaa", category_store: this.props.myCategory, city_store: this.props.myStore, events_list: this.props.myEvents, instance: this});
-    // }
   }
 
   render(props, state) {
 
-    // console.log("render events",props.myStore.city_selected);
-    if (props.myStore.city_selected > 0 && this.justOnce) {
-      // console.log("mayor cero");
+    if (props.myStore.city_selected && this.justOnce) {
       SelectFirstCity(props.myStore, props.myEvents, props.myCarouselEvents, props.myStore.city_selected, 0);
       this.justOnce=0;
     }

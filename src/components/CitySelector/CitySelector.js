@@ -6,8 +6,7 @@ import ApiService from '../.././utils/ApiService';
 import { connect } from 'inferno-mobx'
 // import GeolocationApiService from '../.././utils/GeolocationApiService';
 
-function changeCity(obj) {
-  // console.log("cityyy");
+function changeCity(obj) {  
   const id = obj.id;
   const name = obj.name;
   const instance = obj.instance;
@@ -92,8 +91,8 @@ class CitySelector extends Component {
           {
             myCitysData ? (
               myCitysData.map((my_city) => (
-                <div className="dropdown-content-wrapper-event" onClick={linkEvent({id: my_city.id, name: my_city.name, store: props.myStore, events_list: props.myEvents, carousel_events_list: props.myCarouselEvents, category_selected: props.myCategory, instance: this}, changeCity)}>
-                  <Link to={"/ciudad/"+my_city.id+"/"+my_city.name.replace(/\s/g, "-")}>
+                <div className="dropdown-content-wrapper-event" onClick={linkEvent({id: my_city.code, name: my_city.name, store: props.myStore, events_list: props.myEvents, carousel_events_list: props.myCarouselEvents, category_selected: props.myCategory, instance: this}, changeCity)}>
+                  <Link to={"/ciudad/"+my_city.code}>
                       <a className="citys-name" href="#" >{my_city.name}</a>
                   </Link>
                 </div>
