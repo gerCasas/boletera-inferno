@@ -1,6 +1,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component';
 import './EventDetail.css';
+import { Link } from 'inferno-router';
 import { connect } from 'inferno-mobx';
 import ApiService from '../.././utils/ApiService';
 import EventDetailsTable from '.././EventDetailsTable/EventDetailsTable';
@@ -113,7 +114,9 @@ class EventDetail extends Component {
                 </div>
 
                 <div className="button-div col-sm-4 col-md-4 col-lg-4">
-                  {button_buyticket}
+                  <Link to={"/eventos/"+ state.event_info.data.id +"/"+ state.event_info.data.name.replace(/\s/g, "-")+"/opciones"}>
+                    {button_buyticket}
+                  </Link>
                 </div>
 
                 </div>
@@ -121,7 +124,7 @@ class EventDetail extends Component {
                 <div className="event_detail_descriptions container">
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-event-details-custom">
-                      <h3>Descripción del evento</h3>
+                      <h4>Descripción del evento</h4>
                       <p><b>Descripción:</b> {state.event_info.data.description}</p>
                       {event_video}
 
@@ -186,7 +189,7 @@ class EventDetail extends Component {
             <div className="event_detail_descriptions container">
               <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-event-details-custom">
-                  <h3>Descripción del evento</h3>
+                  <h4>Descripción del evento</h4>
                   <p><b>Descripción:</b> </p>
                   {event_video}
 

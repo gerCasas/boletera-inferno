@@ -88,9 +88,6 @@ class EventList extends Component {
         if (this.props.params.category_id) {
           changeCategory({id: this.props.params.category_id, category_store: this.props.myCategory, city_code: localStorage.getItem('city_code_session'), events_list: this.props.myEvents});
         }
-      } else {
-        // console.log(this.props.myStore.city_selected_name);
-        // SelectFirstCity(this.props.myStore, this.props.myEvents, this.props.myCarouselEvents, this.props.myStore.city_selected, 1);
       }
     }
   }

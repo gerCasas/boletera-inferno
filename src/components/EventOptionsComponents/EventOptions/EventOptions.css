@@ -1,0 +1,44 @@
+.event-filter-dark-options {
+  background:rgba(30,30,30,0.7);
+  width: auto;
+  height: auto;
+  left: 0%;
+  right: 0%;
+  top:0%;
+  bottom: 0%;
+  position: absolute;
+  z-index: 1;
+}
+.event-details-options-header {
+  position: relative;
+  z-index: 2;
+  /*border: solid orange;*/
+}
+.event-title-options{
+  padding-top: 30px;
+  font-size: 30px!important;
+  color: white;
+}
+/*GREATER 768*/
+@media screen and (min-width: 768px) {
+    .date-place-event-options {
+      display: inline-flex;
+    }
+}
+/*LOWER 768*/
+@media screen and (max-width: 768px) {
+    .event-title-options {
+      padding-top: 15px;
+      font-size: 22px!important;
+    }
+}
+.event-place-options, .event-date-options {
+  font-size:18px;
+  color:white;
+}
+.event-place-options, .event-date-options {
+  padding-right: 15px;
+}
+.hr-event-options {
+  border-top: 1px solid #d9d9d9;
+}

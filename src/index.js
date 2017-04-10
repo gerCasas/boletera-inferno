@@ -1,13 +1,14 @@
 import Inferno from 'inferno';
-import { Router, Route, IndexRoute } from 'inferno-router';
 import { Provider } from 'inferno-mobx'
 import { observable } from 'mobx'
+import { Router, Route, IndexRoute } from 'inferno-router';
 import App from './App';
-import createBrowserHistory from 'history/createBrowserHistory';
-import EventDetail from './components/EventDetail/EventDetail';
 import Footer from './components/Footer/Footer';
-import ErrorRequestPage from './components/ErrorRequestPage/ErrorRequestPage';
 import EventList from './components/EventList/EventList';
+import EventDetail from './components/EventDetail/EventDetail';
+import EventOptions from './components/EventOptionsComponents/EventOptions/EventOptions';
+import ErrorRequestPage from './components/ErrorRequestPage/ErrorRequestPage';
+import createBrowserHistory from 'history/createBrowserHistory';
 // import TestCarousel from './components/TestCarousel/TestCarousel';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
@@ -28,6 +29,7 @@ const routes = (
         <Route path="/ciudad/:city_id/" component={ EventList }/>
         <Route path="/categoria/:category_id/" component={ EventList }/>
         <Route path="/eventos/:id/:title" component={ EventDetail }/>
+        <Route path="/eventos/:id/:title/opciones" component={ EventOptions }/>
         <Route path="*" component={ ErrorRequestPage }/>
       </Route>
     </Router>
