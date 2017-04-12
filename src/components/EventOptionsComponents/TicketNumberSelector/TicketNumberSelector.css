@@ -3,3 +3,11 @@
   width: 50px;
   font-weight: bold!important;
 }
+
+.btn:focus,.btn:active { outline: none !important;}
+
+.btn.active {
+  /*position: relative;*/
+  /*top: 1px;left:-1px;*/
+  font-size: 16px;
+}

@@ -114,7 +114,7 @@ class EventDetail extends Component {
                 </div>
 
                 <div className="button-div col-sm-4 col-md-4 col-lg-4">
-                  <Link to={"/eventos/"+ state.event_info.data.id +"/"+ state.event_info.data.name.replace(/\s/g, "-")+"/opciones"}>
+                  <Link to={"/eventos/"+ state.event_info.data.id +"/"+ state.event_info.data.name.replace(/\s/g, "-")+"/funciones"}>
                     {button_buyticket}
                   </Link>
                 </div>

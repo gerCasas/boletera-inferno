@@ -5,7 +5,6 @@ import ApiService from '../../.././utils/ApiService';
 import TicketNumberSelector from './../TicketNumberSelector/TicketNumberSelector';
 import './EventOptions.css';
 
-
 const EventOptions = connect (['myStore'],
 class EventOptions extends Component {
 
@@ -50,7 +49,7 @@ class EventOptions extends Component {
         "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
       ];
 
-      var date_formated = new Date(state.event_info.data.event_date);
+      var date_formated = new Date(state.event_info.data.final_event_date);
       date_formated = date_formated.getDate() + " " + (monthNames[date_formated.getMonth()]) + " " + date_formated.getFullYear();
     }
 
@@ -79,7 +78,7 @@ class EventOptions extends Component {
 
                     <p className="event-date-options">
                       <span className="event-icons glyphicon glyphicon-calendar"/>
-                      Fecha: {date_formated}
+                      Hasta: {date_formated}
                     </p>
                   </div>
                 </div>
@@ -88,9 +87,12 @@ class EventOptions extends Component {
             </div>
 
             <div className="container">
-              <h4>Escoje la cantidad de tickets</h4>
-              <hr className="hr-event-options"/>
+              <div className="date-time-header">
+                <h4>Escoje la fecha y hora</h4>
+                <hr className="hr-event-options"/>
+              </div>
               <TicketNumberSelector  numberTickets="4"/>
+
             </div>
           </div>
         ) : (
