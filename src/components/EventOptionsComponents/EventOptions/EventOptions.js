@@ -3,6 +3,7 @@ import { connect } from 'inferno-mobx';
 import Component from 'inferno-component';
 import ApiService from '../../.././utils/ApiService';
 import TicketNumberSelector from './../TicketNumberSelector/TicketNumberSelector';
+import DateShowSelector from './../DateShowSelector/DateShowSelector';
 import './EventOptions.css';
 
 const EventOptions = connect (['myStore'],
@@ -87,11 +88,17 @@ class EventOptions extends Component {
             </div>
 
             <div className="container">
-              <div className="date-time-header">
-                <h4>Escoje la fecha y hora</h4>
+              <div className="number-tickets-header">
+                <h4>Escoge número de tickets</h4>
                 <hr className="hr-event-options"/>
               </div>
-              <TicketNumberSelector  numberTickets="4"/>
+              <TicketNumberSelector  numberTickets="8"/>
+
+              <div className="date-time-header">
+                <h4>Escoge tiempo y fecha</h4>
+                <hr className="hr-event-options"/>
+              </div>
+              <DateShowSelector numberTickets="8"/>
 
             </div>
           </div>

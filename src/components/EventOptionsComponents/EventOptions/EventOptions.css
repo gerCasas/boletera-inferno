@@ -48,8 +48,9 @@
 }
 .hr-event-options {
   margin-top: 5px;
+  margin-bottom: 10px;
   border-top: 1px solid #d9d9d9;
 }
-.date-time-header {
+.date-time-header, .number-tickets-header {
   margin-top: 30px;
 }

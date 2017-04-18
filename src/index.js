@@ -29,7 +29,7 @@ const routes = (
         <Route path="/ciudad/:city_id/" component={ EventList }/>
         <Route path="/categoria/:category_id/" component={ EventList }/>
         <Route path="/eventos/:id/:title" component={ EventDetail }/>
-        <Route path="/eventos/:id/:title/funciones" component={ EventOptions }/>
+        <Route path="/eventos/:id/:title/funciones/" component={ EventOptions }/>
 
         <Route path="*" component={ ErrorRequestPage }/>
       </Route>

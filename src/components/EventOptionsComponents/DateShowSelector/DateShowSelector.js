@@ -1,6 +1,6 @@
 import Inferno, {linkEvent} from 'inferno';
 import Component from 'inferno-component';
-import './TicketNumberSelector.css';
+import './DateShowSelector.css';
 
 function selectTicketsNumber(obj) {
   const instance = obj.instance;
@@ -17,7 +17,7 @@ function selectTicketsNumber(obj) {
 //   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets=3', { some: 'state' })
 // }
 
-class TicketNumberSelector extends Component {
+class DateShowSelector extends Component {
 
   constructor() {
     super();
@@ -35,7 +35,8 @@ class TicketNumberSelector extends Component {
     var buttonToRender = [];
     for (let i = 1; i <= props.numberTickets; i++) {
       buttonToRender.push(<div className="btn-group" role="group" aria-label="...">
-                            <button type="button" className={(state.activeButtonClassName === 'button'+i) ? 'active btn btn-default btn-event-option-tickets' : 'btn btn-default btn-event-option-tickets'} onClick={linkEvent({ticketNumber: i, button: 'button'+i, instance: this}, selectTicketsNumber)}>{i}</button>
+                            <p className="day-name-event-functions">Lunes</p>
+                            <button type="button" className={(state.activeButtonClassName === 'button'+i) ? 'active btn btn-default btn-event-option-date' : 'btn btn-default btn-event-option-date'} onClick={linkEvent({ticketNumber: i, button: 'button'+i, instance: this}, selectTicketsNumber)}><span className="day-number-event-show-options">{i}</span><br/>Nov</button>
                           </div>);
     }
 
@@ -49,4 +50,4 @@ class TicketNumberSelector extends Component {
   }
 }
 
-export default TicketNumberSelector;
+export default DateShowSelector;
