@@ -5,11 +5,11 @@ import './TicketNumberSelector.css';
 function selectTicketsNumber(obj) {
   const instance = obj.instance;
   const buttonSelected = obj.button;
-  const ticketNumber = obj.ticketNumber;
+  // const ticketNumber = obj.ticketNumber;
   instance.setState({
    activeButtonClassName: buttonSelected
   });
-  obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
+  // obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
 }
 
 // function test(obj) {
@@ -27,10 +27,10 @@ class TicketNumberSelector extends Component {
   }
 
   render(props, state) {
-    if (this.context.router.location.search.indexOf("numeroTickets") >= 0) {
-      var search = this.context.router.location.search.replace("?", "");
-      search = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-    }
+    // if (this.context.router.location.search.indexOf("numeroTickets") >= 0) {
+    //   var search = this.context.router.location.search.replace("?", "");
+    //   search = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    // }
 
     var buttonToRender = [];
     for (let i = 1; i <= props.numberTickets; i++) {

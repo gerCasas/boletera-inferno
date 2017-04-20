@@ -10,6 +10,9 @@ const EventOptions = connect (['myStore'],
 class EventOptions extends Component {
 
   componentDidMount() {
+
+    window.scrollTo(0, 0)
+
     // GET list of events from API
     ApiService.getEvent(this.props.params.id)
       .then(
@@ -18,6 +21,7 @@ class EventOptions extends Component {
           if (res === '#my404') {
             myErrCode404 = "404";
           }
+
           this.setState({
             event_info: res,
             errCode404: myErrCode404
@@ -31,15 +35,36 @@ class EventOptions extends Component {
         }
       );
 
-      window.scrollTo(0, 0)
+    // GET list of events from API
+    ApiService.getEventShowDatesTimes(this.props.params.id)
+      .then(
+        res => {
+          let myErrCode404 = "";
+          if (res === '#my404') {
+            myErrCode404 = "404";
+          }
+          console.log(res);
 
-      if (localStorage.getItem('city_code_session')) {
-        this.props.myStore.city_selected = localStorage.getItem('city_code_session')
-        this.props.myStore.city_selected_name = " "+localStorage.getItem('city_code_session_name')
-      } else {
-        this.props.myStore.city_selected = ""
-        this.props.myStore.city_selected_name = " Selecciona Ciudad"
-      }
+          this.setState({
+            event_dates_and_times: res,
+            errCode404: myErrCode404
+          });
+        },
+        error => {
+          // An error occurred, set state with error
+          this.setState({
+            error: error
+          });
+        }
+      );
+
+    if (localStorage.getItem('city_code_session')) {
+      this.props.myStore.city_selected = localStorage.getItem('city_code_session')
+      this.props.myStore.city_selected_name = " "+localStorage.getItem('city_code_session_name')
+    } else {
+      this.props.myStore.city_selected = ""
+      this.props.myStore.city_selected_name = " Selecciona Ciudad"
+    }
   }
 
   render(props, state) {
@@ -98,7 +123,13 @@ class EventOptions extends Component {
                 <h4>Escoge tiempo y fecha</h4>
                 <hr className="hr-event-options"/>
               </div>
-              <DateShowSelector numberTickets="8"/>
+              <DateShowSelector eventDateTimes={state.event_dates_and_times}/>
+
+              <div className="date-time-header">
+                <h4>Horas displonibles para la fecha elegida</h4>
+                <hr className="hr-event-options"/>
+              </div>
+
 
             </div>
           </div>

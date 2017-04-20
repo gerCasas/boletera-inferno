@@ -1,4 +1,5 @@
-const API = 'http://localhost:4000/api/';
+// const API = 'http://localhost:4000/api/';
+const API = 'http://192.168.0.134:4000/api/';
 
 // GET list of all events from API
 function getEventList() {
@@ -60,6 +61,12 @@ function getEventPhotosListByEventId(event_id) {
     .then(_verifyResponse, _handleError);
 }
 
+// GET list of events_photos by event id
+function getEventShowDatesTimes(event_id) {
+  return fetch(`${API}/events/${event_id}/show_dates`)
+    .then(_verifyResponse, _handleError);
+}
+
 // Verify that the fetched response is JSON
 function _verifyResponse(res) {
   let contentType = res.headers.get('content-type');
@@ -82,5 +89,5 @@ function _handleError(error) {
 }
 
 // Export ApiService
-const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoryById, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId };
+const ApiService = { getEventList, getEvent, getCityById, getCityList, getEventListByCityId, getCarouselEventListByCityId, getCategoryById, getCategoriesList, getEventListByCityIdCategoryId, getEventPhotosListByEventId, getEventShowDatesTimes };
 export default ApiService;
