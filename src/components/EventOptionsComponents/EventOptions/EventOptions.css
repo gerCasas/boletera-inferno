@@ -19,7 +19,6 @@
   font-size: 30px!important;
   color: white;
 }
-
 .date-place-event-options {
   padding-bottom: 30px;
 }
@@ -37,6 +36,12 @@
     }
     .date-place-event-options {
       padding-bottom: 15px;
+    }
+    .sticky-propeties {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
     }
 }
 .event-place-options, .event-date-options {

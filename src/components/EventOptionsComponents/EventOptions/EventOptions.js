@@ -11,7 +11,10 @@ class EventOptions extends Component {
 
   componentDidMount() {
 
-    window.scrollTo(0, 0)
+
+    if (this.props.params.show_date == null) {
+      window.scrollTo(0, 0)
+    }
 
     // GET list of events from API
     ApiService.getEvent(this.props.params.id)
@@ -43,7 +46,7 @@ class EventOptions extends Component {
           if (res === '#my404') {
             myErrCode404 = "404";
           }
-          console.log(res);
+          // console.log(res);
 
           this.setState({
             event_dates_and_times: res,
@@ -82,57 +85,58 @@ class EventOptions extends Component {
     return(
       <div>
         {state.event_info ? (
+
           <div className="container-fluid">
-            <div className="row event_header" style={`background-color:`+state.event_info.data.color_rgb}>
+
+            <div className="row event_header sticky-propeties" style={`background-color:`+state.event_info.data.color_rgb}>
               <div className="event-filter-dark-options"/>
+                <div className="container">
+                  <div className="col-xs-12 col-sm-12">
+                    <div className="event-details-options-header">
+                      <p className="event-title-options">{state.event_info.data.name}</p>
 
-              <div className="container">
-                <div className="event-details-options-header">
+                      <div className="date-place-event-options">
+                        <p className="event-place-options">
+                          <span className="event-icons glyphicon glyphicon-map-marker"/>
+                          {
+                            state.event_info.data.address ?  (
+                              state.event_info.data.address + `, ` + state.event_info.data.city_name
+                            ) : (
+                              state.event_info.data.city_name
+                          )}
+                        </p>
 
-                  <p className="event-title-options">{state.event_info.data.name}</p>
-
-                  <div className="date-place-event-options">
-                    <p className="event-place-options">
-                      <span className="event-icons glyphicon glyphicon-map-marker"/>
-                      {
-                        state.event_info.data.address ?  (
-                          state.event_info.data.address + `, ` + state.event_info.data.city_name
-                        ) : (
-                          state.event_info.data.city_name
-                      )}
-                    </p>
-
-                    <p className="event-date-options">
-                      <span className="event-icons glyphicon glyphicon-calendar"/>
-                      Hasta: {date_formated}
-                    </p>
+                        <p className="event-date-options">
+                          <span className="event-icons glyphicon glyphicon-calendar"/>
+                          Hasta: {date_formated}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-              </div>
             </div>
 
             <div className="container">
-              <div className="number-tickets-header">
-                <h4>Escoge número de tickets</h4>
-                <hr className="hr-event-options"/>
+              <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div className="row">
+                  <div className="number-tickets-header">
+                    <h4>Escoge número de tickets</h4>
+                    <hr className="hr-event-options"/>
+                  </div>
+
+                  <TicketNumberSelector  numberTickets="8"/>
+
+                  <div className="date-time-header">
+                    <h4>Escoge tiempo y fecha</h4>
+                    <hr className="hr-event-options"/>
+                  </div>
+
+                  <DateShowSelector event_id={props.params.id} event_title={props.params.title} show_date={props.params.show_date} eventDateTimes={state.event_dates_and_times}/>
+                  </div>
+                </div>
               </div>
-              <TicketNumberSelector  numberTickets="8"/>
-
-              <div className="date-time-header">
-                <h4>Escoge tiempo y fecha</h4>
-                <hr className="hr-event-options"/>
-              </div>
-              <DateShowSelector eventDateTimes={state.event_dates_and_times}/>
-
-              <div className="date-time-header">
-                <h4>Horas displonibles para la fecha elegida</h4>
-                <hr className="hr-event-options"/>
-              </div>
-
-
             </div>
-          </div>
         ) : (
           <p></p>
         )}

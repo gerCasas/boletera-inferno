@@ -68,7 +68,7 @@ class EventDetail extends Component {
         "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
       ];
 
-      var date_formated = new Date(state.event_info.data.event_date);
+      var date_formated = new Date(state.event_info.data.final_event_date);
       date_formated = date_formated.getDate() + " " + (monthNames[date_formated.getMonth()]) + " " + date_formated.getFullYear();
     }
 
@@ -108,7 +108,7 @@ class EventDetail extends Component {
                   </p>
                   <p className="event-date">
                   <span className="event-icons glyphicon glyphicon-calendar"></span>
-                  Fecha: {date_formated}
+                    Hasta: {date_formated}
                   </p>
                   <p className="event-price">Precio: ${state.event_info.data.price}</p>
                 </div>

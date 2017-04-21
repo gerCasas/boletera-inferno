@@ -1,4 +1,5 @@
-import Inferno, {linkEvent} from 'inferno';
+import Inferno from 'inferno';
+import { Link } from 'inferno-router';
 import Component from 'inferno-component';
 import './DateShowSelector.css';
 import moment from 'moment';
@@ -15,41 +16,49 @@ function selectTicketsNumber(obj) {
   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
 }
 
-// function test(obj) {
-//   console.log(obj.instance);
-//   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets=3', { some: 'state' })
-// }
-
 class DateShowSelector extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      activeButtonClassName: ''
-    };
+  activeButtonClassName = this.props.show_date;
+  activeDateHours;
+
+  componentWillMount() {
+    this.activeButtonClassName = this.props.show_date
+  }
+
+  componentWillUpdate(){
+    this.activeButtonClassName = this.props.show_date
   }
 
   render(props, state) {
 
-    // console.log(moment().locale('es').format('dddd'));
     if (this.props.eventDateTimes != null) {
       let myEventDateTimes = this.props.eventDateTimes.data;
       var buttonToRender = [];
 
-        myEventDateTimes.map((my_date_time) => {
+      myEventDateTimes.map((my_date_time) => {
+
+        if (this.activeButtonClassName === my_date_time.show_date) {
+          this.activeDateHours = my_date_time.date_hours
+        }
+
         var d = new Date(my_date_time.show_date);
 
         buttonToRender.push(
           <div className="btn-group" role="group" aria-label="...">
             <p className="day-name-event-functions">{moment(d).locale('es').format("dddd")}</p>
-            <button type="button" className={(state.activeButtonClassName ===
-              'button'+my_date_time.id) ? 'active btn btn-default btn-event-option-date' : 'btn btn-default btn-event-option-date'}
-              onClick={linkEvent({ticketNumber: my_date_time.id, button: 'button'+my_date_time.id, date_hours: my_date_time.date_hours, instance: this}, selectTicketsNumber)}>
-              <span className="day-number-event-show-options">{moment(d).format("DD")}</span>
-              <br/>{moment(d).locale('es').format("MMM")}
-            </button>
+
+              <Link to={`/eventos/`+this.props.event_id+`/`+this.props.event_title+`/funciones/`+ my_date_time.show_date}>
+
+              <button type="button" className={(this.activeButtonClassName ===
+                my_date_time.show_date) ? 'active btn btn-default btn-event-option-date' : 'btn btn-default btn-event-option-date'}>
+                <span className="day-number-event-show-options">{moment(d).format("DD")}</span>
+                <br/>{moment(d).locale('es').format("MMM")}
+                </button>
+
+              </Link>
+
           </div>);
-        })
+      })
     }
 
     return(
@@ -57,6 +66,14 @@ class DateShowSelector extends Component {
         <div className="btn-toolbar" role="toolbar" aria-label="...">
           {buttonToRender}
         </div>
+
+        <div className="date-time-header">
+          <h4>Horas displonibles para la fecha elegida</h4>
+          <hr className="hr-event-options"/>
+        </div>
+
+        <ShowHourSelector showDateHours={this.activeDateHours} />
+
       </div>
     )
   }
