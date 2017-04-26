@@ -8,7 +8,7 @@ import { Link } from 'inferno-router';
 class App extends Component {
 
   render({children}, state) {
-    
+
     return(
 
       <div className="App">

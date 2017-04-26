@@ -110,16 +110,18 @@ class EventOptions extends Component {
                           <span className="event-icons glyphicon glyphicon-calendar"/>
                           Hasta: {date_formated}
                         </p>
-                      </div>
                     </div>
                   </div>
                 </div>
-
+              </div>
             </div>
 
             <div className="container">
               <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div className="row">
+
+                  <div className="alert alert-danger margin-top-30" role="alert">Selecciona</div>
+
                   <div className="number-tickets-header">
                     <h4>Escoge número de tickets</h4>
                     <hr className="hr-event-options"/>
@@ -134,6 +136,11 @@ class EventOptions extends Component {
 
                   <DateShowSelector event_id={props.params.id} event_title={props.params.title} show_date={props.params.show_date}  hour_date={props.params.hour_date} eventDateTimes={state.event_dates_and_times}/>
                   </div>
+
+                </div>
+
+                <div className="div-button col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <button className="btn btn-warning btn-check-out-att">Pagar tickets</button>
                 </div>
               </div>
             </div>

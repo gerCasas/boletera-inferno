@@ -37,12 +37,12 @@
     .date-place-event-options {
       padding-bottom: 15px;
     }
-    .sticky-propeties {
+    /*.sticky-propeties {
       position: -webkit-sticky;
       position: sticky;
       top: 0px;
       z-index: 10;
-    }
+    }*/
 }
 .event-place-options, .event-date-options {
   font-size:18px;
@@ -58,4 +58,14 @@
 }
 .date-time-header, .number-tickets-header {
   margin-top: 30px;
+}
+.div-button {
+  /*border: solid green;*/
+  text-align:center;
+}
+.btn-check-out-att {
+
+  margin-top: 20px;
+  width: 280px;
+  height: 60px;
 }

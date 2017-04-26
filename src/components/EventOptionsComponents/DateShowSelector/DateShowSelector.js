@@ -42,14 +42,15 @@ class DateShowSelector extends Component {
       let myEventDateTimes = this.props.eventDateTimes.data;
       var buttonToRender = [];
 
-      myEventDateTimes.map((my_date_time) => {
+      let index;
+      for (index = 0; index < myEventDateTimes.length; ++index) {
 
-        let dateMoment = new Date(my_date_time.show_date);
-        let dateSplited = my_date_time.show_date.toString().split("T");
+        let dateMoment = new Date(myEventDateTimes[index].show_date);
+        let dateSplited = myEventDateTimes[index].show_date.toString().split("T");
         this.dateFormated = dateSplited[0];
 
         if (this.activeButtonClassName === this.dateFormated) {
-          this.activeDateHours = my_date_time.date_hours
+          this.activeDateHours = myEventDateTimes[index].date_hours
         }
 
         buttonToRender.push(
@@ -67,7 +68,7 @@ class DateShowSelector extends Component {
               </Link>
 
           </div>);
-      })
+      }
     }
 
     return(
