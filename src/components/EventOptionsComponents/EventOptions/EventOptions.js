@@ -125,14 +125,14 @@ class EventOptions extends Component {
                     <hr className="hr-event-options"/>
                   </div>
 
-                  <TicketNumberSelector  numberTickets="8"/>
+                  <TicketNumberSelector  numberTickets={state.event_info.data.limit_per_purchase}/>
 
                   <div className="date-time-header">
                     <h4>Escoge tiempo y fecha</h4>
                     <hr className="hr-event-options"/>
                   </div>
 
-                  <DateShowSelector event_id={props.params.id} event_title={props.params.title} show_date={props.params.show_date} eventDateTimes={state.event_dates_and_times}/>
+                  <DateShowSelector event_id={props.params.id} event_title={props.params.title} show_date={props.params.show_date}  hour_date={props.params.hour_date} eventDateTimes={state.event_dates_and_times}/>
                   </div>
                 </div>
               </div>

@@ -5,28 +5,35 @@ import './DateShowSelector.css';
 import moment from 'moment';
 import ShowHourSelector from '../ShowHourSelector/ShowHourSelector';
 
-function selectTicketsNumber(obj) {
-  const instance = obj.instance;
-  const buttonSelected = obj.button;
-  const ticketNumber = obj.ticketNumber;
-  const dateHours = obj.date_hours;
-  instance.setState({
-   activeButtonClassName: buttonSelected
-  });
-  obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
-}
+// function selectTicketsNumber(obj) {
+//   const instance = obj.instance;
+//   const buttonSelected = obj.button;
+//   const ticketNumber = obj.ticketNumber;
+//   const dateHours = obj.date_hours;
+//   instance.setState({
+//    activeButtonClassName: buttonSelected
+//   });
+//   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
+// }
 
 class DateShowSelector extends Component {
 
   activeButtonClassName = this.props.show_date;
   activeDateHours;
+  dateFormated;
 
   componentWillMount() {
-    this.activeButtonClassName = this.props.show_date
+    if (this.props.show_date != null) {
+      let dateSplited = this.props.show_date.toString().split("T");
+      this.activeButtonClassName = dateSplited[0];
+    }
   }
 
   componentWillUpdate(){
-    this.activeButtonClassName = this.props.show_date
+    if (this.props.show_date != null) {
+      let dateSplited = this.props.show_date.toString().split("T");
+      this.activeButtonClassName = dateSplited[0];
+    }
   }
 
   render(props, state) {
@@ -37,22 +44,24 @@ class DateShowSelector extends Component {
 
       myEventDateTimes.map((my_date_time) => {
 
-        if (this.activeButtonClassName === my_date_time.show_date) {
+        let dateMoment = new Date(my_date_time.show_date);
+        let dateSplited = my_date_time.show_date.toString().split("T");
+        this.dateFormated = dateSplited[0];
+
+        if (this.activeButtonClassName === this.dateFormated) {
           this.activeDateHours = my_date_time.date_hours
         }
 
-        var d = new Date(my_date_time.show_date);
-
         buttonToRender.push(
           <div className="btn-group" role="group" aria-label="...">
-            <p className="day-name-event-functions">{moment(d).locale('es').format("dddd")}</p>
+            <p className="day-name-event-functions">{moment(dateMoment).locale('es').format("dddd")}</p>
 
-              <Link to={`/eventos/`+this.props.event_id+`/`+this.props.event_title+`/funciones/`+ my_date_time.show_date}>
+              <Link to={`/eventos/`+this.props.event_id+`/`+this.props.event_title+`/funciones/`+this.dateFormated}>
 
-              <button type="button" className={(this.activeButtonClassName ===
-                my_date_time.show_date) ? 'active btn btn-default btn-event-option-date' : 'btn btn-default btn-event-option-date'}>
-                <span className="day-number-event-show-options">{moment(d).format("DD")}</span>
-                <br/>{moment(d).locale('es').format("MMM")}
+                <button type="button" className={(this.activeButtonClassName ===
+                this.dateFormated) ? 'active btn btn-default btn-event-option-date' : 'btn btn-default btn-event-option-date'}>
+                  <span className="day-number-event-show-options">{moment(dateMoment).format("DD")}</span>
+                  <br/>{moment(dateMoment).locale('es').format("MMM")}
                 </button>
 
               </Link>
@@ -72,7 +81,7 @@ class DateShowSelector extends Component {
           <hr className="hr-event-options"/>
         </div>
 
-        <ShowHourSelector showDateHours={this.activeDateHours} />
+        <ShowHourSelector showDateHours={this.activeDateHours} event_id={props.event_id} event_title={props.event_title} show_date={props.show_date} hour_date={props.hour_date}/>
 
       </div>
     )

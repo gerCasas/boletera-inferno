@@ -1,5 +1,5 @@
-const API = 'http://localhost:4000/api/';
-// const API = 'http://192.168.0.113:4000/api/';
+// const API = 'http://localhost:4000/api/';
+const API = 'http://192.168.0.113:4000/api/';
 
 // GET list of all events from API
 function getEventList() {
