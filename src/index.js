@@ -19,11 +19,12 @@ let myEvents = observable({ "data": [] })
 let myCarouselEvents = observable({ "data": []})
 let myCategory = observable({ category_selected_id: '', category_selected_name: 'Todos' })
 let myEventOptionsSelected = observable({ tickets_selected: '', date_selected: '', hour_selected: '' })
+let myAlerts = observable({ max_tickets_flag: false })
 
 const browserHistory = createBrowserHistory();
 
 const routes = (
-  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents } myCategory={ myCategory } myCitys={ myCitys } myEventOptionsSelected={ myEventOptionsSelected}>
+  <Provider myStore={ myStore } myEvents={ myEvents } myCarouselEvents={ myCarouselEvents } myCategory={ myCategory } myCitys={ myCitys } myEventOptionsSelected={ myEventOptionsSelected } myAlerts={ myAlerts }>
     <Router history={ browserHistory }>
       <Route component={ App }>
         <IndexRoute component={ EventList }/>

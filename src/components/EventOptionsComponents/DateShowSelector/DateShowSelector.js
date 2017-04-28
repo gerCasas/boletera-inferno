@@ -53,6 +53,7 @@ class DateShowSelector extends Component {
 
         if (this.activeButtonClassName === this.dateFormated) {
           props.myEventOptionsSelected.date_selected = this.dateFormated;
+          props.myEventOptionsSelected.hour_selected = '';
           this.activeDateHours = myEventDateTimes[index].date_hours;
         }
 

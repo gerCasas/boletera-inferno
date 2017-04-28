@@ -1,0 +1,9 @@
+.custom-margin-ticket {
+  /*width: 100px!important;*/
+  margin: 0!important;
+  font-size: 24px!important;
+}
+
+.input-group-custom-max-width {
+    max-width: 250px!important;
+}

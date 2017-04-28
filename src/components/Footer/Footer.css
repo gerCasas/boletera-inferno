@@ -153,3 +153,12 @@
 .footer-bottom {
   padding-bottom: 10px;
 }
+.top-page-icon {
+  margin-top: 5px;
+  font-size: 26px;
+  color: white;
+  float: right;
+}
+.top-page-icon-div {
+  cursor: pointer;
+}

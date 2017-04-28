@@ -5,12 +5,12 @@
   border-radius: 4px!important;
 }
 .btn:focus, .btn:active {
-  outline: none !important;
-  font-size: 90%;
+  outline: none!important;
+  /*font-size: 90%;*/
 }
 .btn.active {
-  font-size: 100%;
-  outline: none !important;
+  /*font-size: 100%;*/
+  outline: none!important;
   font-weight: bold!important;
 }
 .day-name-event-functions {

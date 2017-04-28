@@ -1,7 +1,13 @@
-import Inferno from 'inferno';
+import Inferno, { linkEvent } from 'inferno';
 import Component from 'inferno-component';
+import jump from 'jump.js'
 import './Footer.css';
 
+function validateSelections() {
+  jump('.App-header', {
+    duration: 400,
+  });
+}
 
 class Footer extends Component {
 
@@ -12,28 +18,32 @@ class Footer extends Component {
       <div className="footer-style" id="footer">
 
           <div className="container-fluid">
-           <div className="container">
-             <div className="row">
-               <div className="col-lg-9  col-md-9 col-sm-9 col-xs-12">
-                 <h3> Más información </h3>
-                 <ul>
-                   <li className="col-xs-4 more-elements"><a href="#"> Tu cuenta </a></li>
-                   <li className="col-xs-4 more-elements"><a href="#"> Tus tickets </a></li>
-                   <li className="col-xs-4 more-elements"><a href="#"> Ayuda </a></li>
-                 </ul>
-               </div>
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-9  col-md-9 col-sm-9 col-xs-12">
+                  <h3> Más información </h3>
+                  <ul>
+                    <li className="col-xs-4 more-elements"><a href="#"> Tu cuenta </a></li>
+                    <li className="col-xs-4 more-elements"><a href="#"> Tus tickets </a></li>
+                    <li className="col-xs-4 more-elements"><a href="#"> Ayuda </a></li>
+                    </ul>
+                </div>
 
-               <div className="social-div col-lg-3  col-md-3 col-sm-3 col-xs-12 ">
-                 <ul className="social">
-                   <li><a href="https://www.facebook.com/iconosdev/"><i className="fa fa-facebook"></i></a></li>
-                   <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                 </ul>
-               </div>
+                <div className="social-div col-lg-3  col-md-3 col-sm-3 col-xs-12 ">
+                  <ul className="social">
+                    <li><a href="https://www.facebook.com/iconosdev/"><i className="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i className="fa fa-twitter"></i></a></li>
 
-               </div>
-             </div>
-           </div>
-         </div>
+                    <div className="top-page-icon-div" onClick={linkEvent({instance: this}, validateSelections)}>
+                      <i className="fa fa-hand-o-up top-page-icon" aria-hidden="true"></i>
+                    </div>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
          <div className="footer-bottom">
            <div className="container">

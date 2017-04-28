@@ -3,29 +3,37 @@ import { connect } from 'inferno-mobx';
 import Component from 'inferno-component';
 import ApiService from '../../.././utils/ApiService';
 import TicketNumberSelector from './../TicketNumberSelector/TicketNumberSelector';
+import TicketNumberSpinner from './../TicketNumberSpinner/TicketNumberSpinner';
 import DateShowSelector from './../DateShowSelector/DateShowSelector';
 import './EventOptions.css';
 import jump from 'jump.js'
 
 function validateSelections(obj) {
   const instance = obj.instance;
-  const optionsSelected = obj.optionsSelected;
 
-  if (optionsSelected.tickets_selected === '' || optionsSelected.date_selected === '' || optionsSelected.hour_selected === '') {
+  if (obj.optionsSelected.tickets_selected === '' || obj.optionsSelected.tickets_selected <= 0 || obj.optionsSelected.date_selected === '' || obj.optionsSelected.hour_selected === '') {
     instance.setState({
      show_alert: '1'
     });
     const node = document.querySelector('#alert-options')
-    jump(node);
+    jump(node, {
+        duration: 700,
+        offset: -10
+    });
   } else {
     obj.instance.context.router.push("/")
   }
 }
 
-const EventOptions = connect (['myStore', 'myEventOptionsSelected'],
+const EventOptions = connect (['myStore', 'myEventOptionsSelected', 'myAlerts'],
 class EventOptions extends Component {
 
   componentDidMount() {
+
+    this.props.myEventOptionsSelected.tickets_selected = '';
+    this.props.myEventOptionsSelected.date_selected = '';
+    this.props.myEventOptionsSelected.hour_selected = '';
+    this.props.myAlerts.max_tickets_flag = false;
 
     if (this.props.params.show_date == null) {
       window.scrollTo(0, 0)
@@ -85,12 +93,6 @@ class EventOptions extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.myEventOptionsSelected.tickets_selected = '';
-    this.props.myEventOptionsSelected.date_selected = '';
-    this.props.myEventOptionsSelected.hour_selected = '';
-  }
-
   render(props, state) {
 
     if (state.event_info) {
@@ -101,6 +103,17 @@ class EventOptions extends Component {
 
       var date_formated = new Date(state.event_info.data.final_event_date);
       date_formated = date_formated.getDate() + " " + (monthNames[date_formated.getMonth()]) + " " + date_formated.getFullYear();
+
+      var ticketSelectorToRender;
+      if (state.event_info.data.limit_per_purchase > 10) {
+        ticketSelectorToRender = <TicketNumberSpinner maxValue={state.event_info.data.limit_per_purchase} />
+      } else {
+        ticketSelectorToRender = <TicketNumberSelector numberTickets={state.event_info.data.limit_per_purchase} />
+      }
+
+      var myAlertMaxTickets;
+      if (props.myAlerts.max_tickets_flag) myAlertMaxTickets = <div id="alert-options" className="alert alert-danger margin-top-30" role="alert">{`El número máximo de tickets que puedes comprar es ` + state.event_info.data.limit_per_purchase}</div>
+
     }
 
     return(
@@ -141,6 +154,8 @@ class EventOptions extends Component {
               <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div className="row">
 
+                  {myAlertMaxTickets}
+
                   {state.show_alert ? (
                     <div id="alert-options" className="alert alert-danger margin-top-30" role="alert">Termina la selección de tickets, fecha y hora.</div>
                   ) : (
@@ -152,7 +167,7 @@ class EventOptions extends Component {
                     <hr className="hr-event-options"/>
                   </div>
 
-                  <TicketNumberSelector  numberTickets={state.event_info.data.limit_per_purchase}/>
+                  {ticketSelectorToRender}
 
                   <div className="date-time-header">
                     <h4>Escoge fecha</h4>
