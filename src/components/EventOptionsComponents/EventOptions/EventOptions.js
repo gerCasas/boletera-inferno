@@ -1,16 +1,31 @@
-import Inferno from 'inferno';
+import Inferno, { linkEvent } from 'inferno';
 import { connect } from 'inferno-mobx';
 import Component from 'inferno-component';
 import ApiService from '../../.././utils/ApiService';
 import TicketNumberSelector from './../TicketNumberSelector/TicketNumberSelector';
 import DateShowSelector from './../DateShowSelector/DateShowSelector';
 import './EventOptions.css';
+import jump from 'jump.js'
 
-const EventOptions = connect (['myStore'],
+function validateSelections(obj) {
+  const instance = obj.instance;
+  const optionsSelected = obj.optionsSelected;
+
+  if (optionsSelected.tickets_selected === '' || optionsSelected.date_selected === '' || optionsSelected.hour_selected === '') {
+    instance.setState({
+     show_alert: '1'
+    });
+    const node = document.querySelector('#alert-options')
+    jump(node);
+  } else {
+    obj.instance.context.router.push("/")
+  }
+}
+
+const EventOptions = connect (['myStore', 'myEventOptionsSelected'],
 class EventOptions extends Component {
 
   componentDidMount() {
-
 
     if (this.props.params.show_date == null) {
       window.scrollTo(0, 0)
@@ -70,6 +85,12 @@ class EventOptions extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.myEventOptionsSelected.tickets_selected = '';
+    this.props.myEventOptionsSelected.date_selected = '';
+    this.props.myEventOptionsSelected.hour_selected = '';
+  }
+
   render(props, state) {
 
     if (state.event_info) {
@@ -120,7 +141,11 @@ class EventOptions extends Component {
               <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div className="row">
 
-                  <div className="alert alert-danger margin-top-30" role="alert">Selecciona</div>
+                  {state.show_alert ? (
+                    <div id="alert-options" className="alert alert-danger margin-top-30" role="alert">Termina la selección de tickets, fecha y hora.</div>
+                  ) : (
+                    <div></div>
+                  )}
 
                   <div className="number-tickets-header">
                     <h4>Escoge número de tickets</h4>
@@ -130,7 +155,7 @@ class EventOptions extends Component {
                   <TicketNumberSelector  numberTickets={state.event_info.data.limit_per_purchase}/>
 
                   <div className="date-time-header">
-                    <h4>Escoge tiempo y fecha</h4>
+                    <h4>Escoge fecha</h4>
                     <hr className="hr-event-options"/>
                   </div>
 
@@ -140,7 +165,7 @@ class EventOptions extends Component {
                 </div>
 
                 <div className="div-button col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                  <button className="btn btn-warning btn-check-out-att">Pagar tickets</button>
+                  <button onClick={linkEvent({optionsSelected: props.myEventOptionsSelected, instance: this}, validateSelections)} className="btn btn-warning btn-check-out-att">Pagar tickets</button>
                 </div>
               </div>
             </div>

@@ -5,23 +5,25 @@ import Component from 'inferno-component';
 import './ShowHourSelector.css';
 import moment from 'moment';
 
-const ShowHourSelector = connect (['myHourSelected'],
+const ShowHourSelector = connect (['myEventOptionsSelected'],
 class ShowHourSelector extends Component {
 
   hourFormated;
 
   render(props, state) {
 
-    props.myHourSelected = props.hour_date
-
     let radioButtons = [];
     if (props.showDateHours != null){
 
       let index;
-      for (index = 0; index <   props.showDateHours.length; ++index) {        
+      for (index = 0; index < props.showDateHours.length; ++index) {
         let dateMoment = new Date(props.showDateHours[index].date_hour);
         let dateSplited = props.showDateHours[index].date_hour.toString().split("T");
         this.hourFormated = dateSplited[1];
+
+        if (props.hour_date === this.hourFormated) {
+          props.myEventOptionsSelected.hour_selected = this.hourFormated
+        }
 
         radioButtons.push(
           <div className="btn-group" role="group" aria-label="...">
@@ -36,7 +38,7 @@ class ShowHourSelector extends Component {
     }
 
     return(
-      <div className="btn-toolbar" role="toolbar" aria-label="...">
+      <div className="btn-toolbar" id="asd" role="toolbar" aria-label="...">
         {radioButtons}
       </div>
     )

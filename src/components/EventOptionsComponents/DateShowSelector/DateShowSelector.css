@@ -3,11 +3,9 @@
   width: 80px;
   margin-top: 0px!important;
   border-radius: 4px!important;
-  /*font-weight: bold!important;*/
 }
-.btn:focus,.btn:active {
+.btn:focus, .btn:active {
   outline: none !important;
-  /*font-weight: bold!important;*/
   font-size: 90%;
 }
 .btn.active {

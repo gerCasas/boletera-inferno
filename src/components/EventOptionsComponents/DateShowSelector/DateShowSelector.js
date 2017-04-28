@@ -1,5 +1,6 @@
 import Inferno from 'inferno';
 import { Link } from 'inferno-router';
+import { connect } from 'inferno-mobx';
 import Component from 'inferno-component';
 import './DateShowSelector.css';
 import moment from 'moment';
@@ -16,6 +17,7 @@ import ShowHourSelector from '../ShowHourSelector/ShowHourSelector';
 //   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets='+ticketNumber)
 // }
 
+const DateShowSelector = connect(['myEventOptionsSelected'],
 class DateShowSelector extends Component {
 
   activeButtonClassName = this.props.show_date;
@@ -50,7 +52,8 @@ class DateShowSelector extends Component {
         this.dateFormated = dateSplited[0];
 
         if (this.activeButtonClassName === this.dateFormated) {
-          this.activeDateHours = myEventDateTimes[index].date_hours
+          props.myEventOptionsSelected.date_selected = this.dateFormated;
+          this.activeDateHours = myEventDateTimes[index].date_hours;
         }
 
         buttonToRender.push(
@@ -87,6 +90,6 @@ class DateShowSelector extends Component {
       </div>
     )
   }
-}
+})
 
 export default DateShowSelector;

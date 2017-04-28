@@ -1,21 +1,18 @@
 
 .dropbtn {
-    /*background-color: #4CAF50;*/
     color: white;
     padding: 16px;
     font-size: 18px;
     border: none;
     cursor: pointer;
-    /*margin-top: 20px;*/
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
-    text-align:left;
+    text-align: left;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -26,7 +23,6 @@
     border-radius: 5px;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
     color: black;
     padding: 5px 5px;
@@ -35,20 +31,16 @@
     border-radius: 5px;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #f1f1f1;
 }
 
-/* Hover combo city on larger screens */
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
   .dropdown:hover .dropdown-content {
     display: block!important;
   }
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown: .dropbtn {
-    /*background-color: #f9f9f9;*/
+.dropdown:.dropbtn {
     color: inherit;
 }

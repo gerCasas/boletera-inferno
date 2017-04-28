@@ -1,37 +1,27 @@
-.event-details-photos-grid{
-  /*border: solid green;*/
-}
-.event-image-photo-grid{
+.event-image-photo-grid {
   width: 100%;
   height: 100%;
   cursor: pointer;
   transition: 0.3s;
 }
-.event-details-photos-grid-row {
-  /*border: solid blue;*/
-}
 .padding-photo-grid-custom {
-  /*padding-right: 0!important;*/
   padding-left: 5px!important;
   padding-right: 5px!important;
   padding-bottom: 5px!important;
 }
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  padding-top: 10%; /* Location of the box */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  /*background-color: rgb(221, 26, 26); /* Fallback color */
-  background-color: rgba(163, 163, 163, 0.2); /* Black w/ opacity */
+  padding-top: 10%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(163, 163, 163, 0.2);
 }
-/* Modal Content (image) */
 .modal-content {
-    /*margin: auto;*/
     position: absolute!important;
     display: block;
     width: 90%;
@@ -40,13 +30,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* Add Animation */
-/*.modal-content, #caption {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.2s;
-    animation-name: zoom;
-    animation-duration: 0.2s;
-}*/
 @-webkit-keyframes zoom {
     from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
@@ -55,7 +38,6 @@
     from {transform:scale(0)}
     to {transform:scale(1)}
 }
-/* The Close Button */
 .close {
     position: absolute;
     top: 15px;
@@ -71,11 +53,9 @@
     text-decoration: none;
     cursor: pointer;
 }
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     .modal-content {
         width: 80%;
-        /*height: 90%;*/
     }
 }
 .center-modal-content {
@@ -95,6 +75,6 @@
   transform: none!important;
   position: initial!important;
 }
-.event-details-photos-grid-row h3{
+.event-details-photos-grid-row h3 {
   padding-left: 5px;
 }

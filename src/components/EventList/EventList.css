@@ -1,7 +1,6 @@
 
 .EventList-image {
   margin: 0 auto;
-  /*max-width: 200px;*/
   max-height: 280px;
   border-radius: 5px;
 }
@@ -14,38 +13,33 @@
   padding-left: 0;
   list-style-type: none;
   text-align: center;
-  /*border: 3px solid orange;*/
 }
 .EventList-li:hover {
   background-color: #f2f2f2;
 }
 .EventList-li {
-  /*margin: 0 auto;*/
-  /*border: 3px solid red;*/
   margin-bottom: 2px;
-  /*margin-right: 5px;*/
   padding: 5px;
   padding-top: 10px;
   float: left;
   min-width: 100px;
   min-height: 100px;
   max-height: 500px;
-  /*width: 250px;*/
   height: 320px;
   font-weight: 300;
 }
 @media screen and (max-width: 568px) {
-    .EventList-li  {
+    .EventList-li {
         height: 300px;
     }
 }
 @media screen and (max-width: 468px) {
-    .EventList-li  {
+    .EventList-li {
         height: 250px;
     }
 }
 @media screen and (min-width: 1200px) {
-    .EventList-li  {
+    .EventList-li {
       min-width: 250px;
       min-height: 250px;
       height: 340px;
@@ -60,34 +54,28 @@
 .Event-name {
     max-width: 100%;
 }
-.container-fluid {
-  /*border: 3px solid purple;*/
-}
 .my-container-fluid {
   margin-right: auto;
   margin-left: auto;
-  /*border: 3px solid blue;*/
 }
 @media screen and (min-width: 768px) {
-    .container-events  {
+    .container-events {
         padding-left: 0px;
         padding-right: 0px;
     }
 }
 .container-events {
-    /*border: 3px solid blue;*/
-    margin: 0 auto;
+  margin: 0 auto;
 }
 @media screen and (min-width: 1200px) {
-    .container-events  {
-      /*border: 3px solid blue;*/
+    .container-events {
       max-width: 1170px;
       margin: 0 auto;
       float: none !important;
     }
 }
 @media screen and (max-width: 468px) {
-    .Event-name  {
+    .Event-name {
         font-size: 12px;
     }
 }

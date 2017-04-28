@@ -1,11 +1,13 @@
 import Inferno, {linkEvent} from 'inferno';
+import { connect } from 'inferno-mobx';
 import Component from 'inferno-component';
 import './TicketNumberSelector.css';
 
 function selectTicketsNumber(obj) {
   const instance = obj.instance;
   const buttonSelected = obj.button;
-  // const ticketNumber = obj.ticketNumber;
+  const ticketNumber = obj.ticketNumber;
+  obj.optionsSelected.tickets_selected = ticketNumber;
   instance.setState({
    activeButtonClassName: buttonSelected
   });
@@ -17,6 +19,7 @@ function selectTicketsNumber(obj) {
 //   obj.instance.context.router.push(obj.instance.context.router.location.pathname+'?numeroTickets=3', { some: 'state' })
 // }
 
+const TicketNumberSelector = connect(['myEventOptionsSelected'],
 class TicketNumberSelector extends Component {
 
   constructor() {
@@ -35,7 +38,7 @@ class TicketNumberSelector extends Component {
     var buttonToRender = [];
     for (let i = 1; i <= props.numberTickets; i++) {
       buttonToRender.push(<div className="btn-group" role="group" aria-label="...">
-                            <button type="button" className={(state.activeButtonClassName === 'button'+i) ? 'active btn btn-default btn-event-option-tickets' : 'btn btn-default btn-event-option-tickets'} onClick={linkEvent({ticketNumber: i, button: 'button'+i, instance: this}, selectTicketsNumber)}>{i}</button>
+                            <button type="button" className={(state.activeButtonClassName === 'button'+i) ? 'active btn btn-default btn-event-option-tickets' : 'btn btn-default btn-event-option-tickets'} onClick={linkEvent({ticketNumber: i, button: 'button'+i, optionsSelected: props.myEventOptionsSelected, instance: this}, selectTicketsNumber)}>{i}</button>
                           </div>);
     }
 
@@ -47,6 +50,6 @@ class TicketNumberSelector extends Component {
       </div>
     )
   }
-}
+})
 
 export default TicketNumberSelector;

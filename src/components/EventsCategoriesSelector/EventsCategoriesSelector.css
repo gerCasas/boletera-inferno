@@ -1,5 +1,5 @@
 .selector {
-  background-color:#337ab7;
+  background-color: #337ab7;
   opacity: 0.9;
   text-shadow: 0 1px 0 rgba(0,0,0,0.25);
 }
@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 555px) {
     .EventsCategory-ul {
-        width:100%;
+        width: 100%;
     }
 }
 
@@ -34,13 +34,15 @@
   color: white;
 }
 
-.center-block {float: none !important}
+.center-block {
+  float: none!important;
+}
 
 .nopadding {
-   padding-left: 0 !important;
+   padding-left: 0!important;
 }
 
 .nopadding-container {
-   padding-left: 0 !important;
-   padding-right: 0 !important;
+   padding-left: 0!important;
+   padding-right: 0!important;
 }

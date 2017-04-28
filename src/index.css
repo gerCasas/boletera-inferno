@@ -1,22 +1,13 @@
-/*body {
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
-}*/
-
 
 body {
-  /*font-family: 'Slabo 27px', serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-weight: 400;
   background-color: #fbfbfb;
-  /*background-color: white;*/
 }
 
 html {
   position: relative;
   min-height: 100%;
   background-color: #fbfbfb;
-  /*background-color: white;*/
 }
