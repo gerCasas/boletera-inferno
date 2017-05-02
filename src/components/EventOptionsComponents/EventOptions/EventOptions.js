@@ -116,6 +116,14 @@ class EventOptions extends Component {
 
     }
 
+    var buttoBuyToRender;
+    if (state.event_info.data.active > 0) {
+      buttoBuyToRender = <button onClick={linkEvent({optionsSelected: props.myEventOptionsSelected, instance: this}, validateSelections)} className="btn btn-warning btn-check-out-att">Pagar tickets</button>
+    } else {
+      buttoBuyToRender = <div></div>
+    }
+
+
     return(
       <div>
         {state.event_info ? (
@@ -180,7 +188,7 @@ class EventOptions extends Component {
                 </div>
 
                 <div className="div-button col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                  <button onClick={linkEvent({optionsSelected: props.myEventOptionsSelected, instance: this}, validateSelections)} className="btn btn-warning btn-check-out-att">Pagar tickets</button>
+                  {buttoBuyToRender}
                 </div>
               </div>
             </div>
