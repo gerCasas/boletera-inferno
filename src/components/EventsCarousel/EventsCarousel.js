@@ -57,7 +57,7 @@ class EventsCarousel extends Component {
         index = 0;
       }
         this.setState({ indexImage: index });
-    }, 8000);
+    }, 6000);
   }
 
   componentWillUnmount() {

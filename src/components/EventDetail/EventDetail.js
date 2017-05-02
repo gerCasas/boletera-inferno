@@ -48,6 +48,7 @@ class EventDetail extends Component {
 
     let button_buyticket = "";
     let event_video = "";
+    let event_background = "";
     if (state.event_info && state.event_info !== '#my404') {
 
       if (state.event_info.data.active) {
@@ -62,6 +63,12 @@ class EventDetail extends Component {
                       </div>
       } else {
         event_video = "";
+      }
+
+      if (state.event_info.data.image_background_path) {
+        event_background = <img className="event-image-background" src={state.event_info.data.image_background_path}  alt="" />
+      } else {
+        event_background = "";
       }
 
       var monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
@@ -84,39 +91,44 @@ class EventDetail extends Component {
                 <div className="row event_header" style={`background-color:`+state.event_info.data.color_rgb}>
 
                 <div className="visible-md visible-lg">
-                  <img className="event-image-background" src={state.event_info.data.image_background_path}  alt="" />
+                  {event_background}
                 </div>
 
                 <div className="event-filter-dark"/>
 
-                <div className="image-div col-sm-3 col-md-3 col-lg-3">
-                  <img className="event-img-responsive img-rounded" src={state.event_info.data.image_path} alt="Event"/>
-                </div>
+                <div className="container">
+                  <div className="row">
 
-                <div className="event-bullet-points col-sm-5 col-md-5 col-lg-5">
-                  <p className="event-title">{state.event_info.data.name}</p>
-                  <hr className="event-underscore"/>
+                    <div className="image-div col-sm-3 col-md-3 col-lg-3">
+                      <img className="event-img-responsive img-rounded" src={state.event_info.data.image_path} alt="Event"/>
+                    </div>
 
-                  <p className="event-place">
-                  <span className="event-icons glyphicon glyphicon-map-marker"></span>
-                  {
-                    state.event_info.data.address ?  (
-                      state.event_info.data.address + `, ` + state.event_info.data.city_name
-                    ) : (
-                      state.event_info.data.city_name
-                  )}
-                  </p>
-                  <p className="event-date">
-                  <span className="event-icons glyphicon glyphicon-calendar"></span>
-                    Hasta: {date_formated}
-                  </p>
-                  <p className="event-price">Precio: ${state.event_info.data.price}</p>
-                </div>
+                    <div className="event-bullet-points col-sm-5 col-md-5 col-lg-5">
+                      <p className="event-title">{state.event_info.data.name}</p>
+                      <hr className="event-underscore"/>
 
-                <div className="button-div col-sm-4 col-md-4 col-lg-4">
-                  <Link to={"/eventos/"+ state.event_info.data.id +"/"+ state.event_info.data.name.replace(/\s/g, "-")+"/funciones"}>
-                    {button_buyticket}
-                  </Link>
+                      <p className="event-place">
+                      <span className="event-icons glyphicon glyphicon-map-marker"></span>
+                      {
+                        state.event_info.data.address ?  (
+                          state.event_info.data.address + `, ` + state.event_info.data.city_name
+                        ) : (
+                          state.event_info.data.city_name
+                      )}
+                      </p>
+                      <p className="event-date">
+                      <span className="event-icons glyphicon glyphicon-calendar"></span>
+                        Hasta: {date_formated}
+                      </p>
+                      <p className="event-price">Desde: ${state.event_info.data.price}</p>
+                    </div>
+
+                    <div className="button-div col-sm-4 col-md-4 col-lg-4">
+                      <Link to={"/eventos/"+ state.event_info.data.id +"/"+ state.event_info.data.name.replace(/\s/g, "-")+"/funciones"}>
+                        {button_buyticket}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
 
                 </div>
@@ -161,27 +173,32 @@ class EventDetail extends Component {
 
               <div className="event-filter-dark"/>
 
-              <div className="image-div col-sm-3 col-md-3 col-lg-3">
-                <img className="event-img-responsive img-rounded" alt="Event"/>
-              </div>
+              <div className="container">
+                <div className="row">
 
-              <div className="event-bullet-points col-sm-5 col-md-5 col-lg-5">
-          	    <p className="event-title">Titulo</p>
-                <hr className="event-underscore"/>
+                  <div className="image-div col-sm-3 col-md-3 col-lg-3">
+                    <img className="event-img-responsive img-rounded" alt="Event"/>
+                  </div>
 
-                <p className="event-place">
-                  <span className="event-icons glyphicon glyphicon-map-marker"></span>
-                  Ciudad
-                </p>
-                <p className="event-date">
-                  <span className="event-icons glyphicon glyphicon-calendar"></span>
-                  Fecha: {date_formated}
-                </p>
-                <p className="event-price">Precio: $</p>
-              </div>
+                  <div className="event-bullet-points col-sm-5 col-md-5 col-lg-5">
+              	    <p className="event-title">T</p>
+                    <hr className="event-underscore"/>
 
-              <div className="button-div col-sm-4 col-md-4 col-lg-4">
-                {button_buyticket}
+                    <p className="event-place">
+                      <span className="event-icons glyphicon glyphicon-map-marker"></span>
+                      C
+                    </p>
+                    <p className="event-date">
+                      <span className="event-icons glyphicon glyphicon-calendar"></span>
+                      F: {date_formated}
+                    </p>
+                    <p className="event-price">$</p>
+                  </div>
+
+                  <div className="button-div col-sm-4 col-md-4 col-lg-4">
+                    {button_buyticket}
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -189,8 +206,8 @@ class EventDetail extends Component {
             <div className="event_detail_descriptions container">
               <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 padding-event-details-custom">
-                  <h4>Descripción del evento</h4>
-                  <p><b>Descripción:</b> </p>
+                  <h4></h4>
+                  <p><b></b> </p>
                   {event_video}
 
                   <div className="row">

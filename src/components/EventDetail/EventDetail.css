@@ -25,12 +25,12 @@
 }
 
 .image-div {
-    text-align: center;
+    text-align: left;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .image-div {
-        text-align: right;
+        text-align: center;
     }
 }
 
@@ -43,7 +43,7 @@
     visibility: hidden;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 992px) {
     .event-img-responsive   {
       width: 100%;
       height: 100%;
@@ -116,7 +116,7 @@
 }
 
 .btn-resize {
-  width: 280px;
+  width: 100%;
   height: 60px;
 }
 
